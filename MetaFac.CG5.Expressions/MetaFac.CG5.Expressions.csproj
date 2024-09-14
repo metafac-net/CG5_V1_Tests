@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <TargetFrameworks>net8.0</TargetFrameworks>
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+        <WarningsAsErrors>nullable</WarningsAsErrors>
+        <Description>CG5 expression parser and evaluator</Description>
+        <Product>CG5</Product>
+        <Company>MetaFac</Company>
+        <Authors>MetaFac Contributors</Authors>
+        <SignAssembly>true</SignAssembly>
+        <AssemblyOriginatorKeyFile>..\SigningKey.snk</AssemblyOriginatorKeyFile>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
+        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/metafac-net/CG5</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/metafac-net/CG5</RepositoryUrl>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="..\README.md">
+            <Pack>True</Pack>
+            <PackagePath>\</PackagePath>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="MetaFac.CG4.Runtime" Version="2.9.11" />
+        <PackageReference Include="MetaFac.CG4.Runtime.JsonSystemText" Version="2.9.11" />
+        <PackageReference Include="MetaFac.CG4.Runtime.MessagePack" Version="2.9.11" />
+        <PackageReference Include="MetaFac.Mutability" Version="2.3.4" />
+        <PackageReference Include="Nerdbank.GitVersioning" Version="3.6.143">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\MetaFac.CG5.Parsing\MetaFac.CG5.Parsing.csproj" />
+    </ItemGroup>
+
+</Project>

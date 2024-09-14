@@ -1,0 +1,6 @@
+{
+  "ProductName": "CG5",
+  "ExemptionCodes": [
+    "targetframeworks_contains_net6"
+  ]
+}
