@@ -24,8 +24,4 @@
 		</PackageReference>
 	</ItemGroup>
 
-	<ItemGroup>
-	  <ProjectReference Include="..\MetaFac.CG5.Parsing\MetaFac.CG5.Parsing.csproj" />
-	</ItemGroup>
-
 </Project>
