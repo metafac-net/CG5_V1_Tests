@@ -1,0 +1,127 @@
+﻿namespace MetaFac.CG5.Parsing.Builtin
+{
+    public sealed class CSharpIdentifier<TEnum> : MetaFac.CG5.Parsing.ITokenMatcher<TEnum>
+        where TEnum :  struct
+    {
+        public CSharpIdentifier(TEnum defaultKind, System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, TEnum>> keywords) { }
+        public System.ValueTuple<int, MetaFac.CG5.Parsing.Token<TEnum>> Match(System.ReadOnlyMemory<char> source) { }
+    }
+    public sealed class CharMatcher<TEnum> : MetaFac.CG5.Parsing.ITokenMatcher<TEnum>
+        where TEnum :  struct
+    {
+        public CharMatcher(System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<char, TEnum>> map) { }
+        public System.ValueTuple<int, MetaFac.CG5.Parsing.Token<TEnum>> Match(System.ReadOnlyMemory<char> source) { }
+    }
+    public sealed class DecimalNumber<TEnum> : MetaFac.CG5.Parsing.ITokenMatcher<TEnum>
+        where TEnum :  struct
+    {
+        public DecimalNumber(TEnum kind) { }
+        public System.ValueTuple<int, MetaFac.CG5.Parsing.Token<TEnum>> Match(System.ReadOnlyMemory<char> source) { }
+    }
+    public sealed class DoubleQuotedString<TEnum> : MetaFac.CG5.Parsing.ITokenMatcher<TEnum>
+        where TEnum :  struct
+    {
+        public DoubleQuotedString(TEnum kind) { }
+        public System.ValueTuple<int, MetaFac.CG5.Parsing.Token<TEnum>> Match(System.ReadOnlyMemory<char> source) { }
+    }
+    public sealed class LineSeparator<TEnum> : MetaFac.CG5.Parsing.ITokenMatcher<TEnum>
+        where TEnum :  struct
+    {
+        public LineSeparator(TEnum kind) { }
+        public System.ValueTuple<int, MetaFac.CG5.Parsing.Token<TEnum>> Match(System.ReadOnlyMemory<char> source) { }
+    }
+    public sealed class SingleQuotedChar<TEnum> : MetaFac.CG5.Parsing.ITokenMatcher<TEnum>
+        where TEnum :  struct
+    {
+        public SingleQuotedChar(TEnum kind) { }
+        public System.ValueTuple<int, MetaFac.CG5.Parsing.Token<TEnum>> Match(System.ReadOnlyMemory<char> source) { }
+    }
+    public sealed class StringMatcher<TEnum> : MetaFac.CG5.Parsing.ITokenMatcher<TEnum>
+        where TEnum :  struct
+    {
+        public StringMatcher(int keylen, System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, TEnum>> map) { }
+        public System.ValueTuple<int, MetaFac.CG5.Parsing.Token<TEnum>> Match(System.ReadOnlyMemory<char> source) { }
+    }
+    public sealed class WhiteSpace<TEnum> : MetaFac.CG5.Parsing.ITokenMatcher<TEnum>
+        where TEnum :  struct
+    {
+        public WhiteSpace(TEnum kind) { }
+        public System.ValueTuple<int, MetaFac.CG5.Parsing.Token<TEnum>> Match(System.ReadOnlyMemory<char> source) { }
+    }
+}
+namespace MetaFac.CG5.Parsing
+{
+    public static class Combinators
+    {
+        public static MetaFac.CG5.Parsing.ParserResult<TNode> AllOf<TEnum, TNode>(MetaFac.CG5.Parsing.ParserInputs<TEnum> input, System.Func<MetaFac.CG5.Parsing.ParserInputs<TEnum>, MetaFac.CG5.Parsing.ParserResult<TNode>> parserA, System.Func<MetaFac.CG5.Parsing.ParserInputs<TEnum>, MetaFac.CG5.Parsing.ParserResult<TNode>> parserB, System.Func<TNode, TNode, TNode> combiner)
+            where TEnum :  struct { }
+        public static MetaFac.CG5.Parsing.ParserResult<TNode> AllOf<TEnum, TNode>(MetaFac.CG5.Parsing.ParserInputs<TEnum> input, System.Func<MetaFac.CG5.Parsing.ParserInputs<TEnum>, MetaFac.CG5.Parsing.ParserResult<TNode>> parserA, System.Func<MetaFac.CG5.Parsing.ParserInputs<TEnum>, MetaFac.CG5.Parsing.ParserResult<TNode>> parserB, System.Func<MetaFac.CG5.Parsing.ParserInputs<TEnum>, MetaFac.CG5.Parsing.ParserResult<TNode>> parserC, System.Func<TNode, TNode, TNode, TNode> combiner)
+            where TEnum :  struct { }
+        public static MetaFac.CG5.Parsing.ParserResult<TNode> AllOf<TEnum, TNode>(MetaFac.CG5.Parsing.ParserInputs<TEnum> input, System.Func<MetaFac.CG5.Parsing.ParserInputs<TEnum>, MetaFac.CG5.Parsing.ParserResult<TNode>> parserA, System.Func<MetaFac.CG5.Parsing.ParserInputs<TEnum>, MetaFac.CG5.Parsing.ParserResult<TNode>> parserB, System.Func<MetaFac.CG5.Parsing.ParserInputs<TEnum>, MetaFac.CG5.Parsing.ParserResult<TNode>> parserC, System.Func<MetaFac.CG5.Parsing.ParserInputs<TEnum>, MetaFac.CG5.Parsing.ParserResult<TNode>> parserD, System.Func<TNode, TNode, TNode, TNode, TNode> combiner)
+            where TEnum :  struct { }
+        public static MetaFac.CG5.Parsing.ParserResult<TNode> AllOf<TEnum, TNode>(MetaFac.CG5.Parsing.ParserInputs<TEnum> input, System.Func<MetaFac.CG5.Parsing.ParserInputs<TEnum>, MetaFac.CG5.Parsing.ParserResult<TNode>> parserA, System.Func<MetaFac.CG5.Parsing.ParserInputs<TEnum>, MetaFac.CG5.Parsing.ParserResult<TNode>> parserB, System.Func<MetaFac.CG5.Parsing.ParserInputs<TEnum>, MetaFac.CG5.Parsing.ParserResult<TNode>> parserC, System.Func<MetaFac.CG5.Parsing.ParserInputs<TEnum>, MetaFac.CG5.Parsing.ParserResult<TNode>> parserD, System.Func<MetaFac.CG5.Parsing.ParserInputs<TEnum>, MetaFac.CG5.Parsing.ParserResult<TNode>> parserE, System.Func<TNode, TNode, TNode, TNode, TNode, TNode> combiner)
+            where TEnum :  struct { }
+        public static MetaFac.CG5.Parsing.ParserResult<TNode> Chain<TEnum, TNode>(MetaFac.CG5.Parsing.ParserInputs<TEnum> input, System.Func<MetaFac.CG5.Parsing.ParserInputs<TEnum>, MetaFac.CG5.Parsing.ParserResult<TNode>> leftRightParser, System.Func<MetaFac.CG5.Parsing.ParserInputs<TEnum>, MetaFac.CG5.Parsing.ParserResult<TNode>> operatorParser, System.Func<TNode, TNode, TNode, TNode> combiner)
+            where TEnum :  struct { }
+        public static MetaFac.CG5.Parsing.ParserResult<TNode> FirstOf<TEnum, TNode>(this MetaFac.CG5.Parsing.ParserInputs<TEnum> input, params System.Func<MetaFac.CG5.Parsing.ParserInputs<TEnum>, MetaFac.CG5.Parsing.ParserResult<TNode>>[] parsers)
+            where TEnum :  struct { }
+        public static MetaFac.CG5.Parsing.ParserResult<TNode> FirstOf<TEnum, TNode>(this MetaFac.CG5.Parsing.ParserInputs<TEnum> input, System.Func<MetaFac.CG5.Parsing.ParserInputs<TEnum>, MetaFac.CG5.Parsing.ParserResult<TNode>> parserA, System.Func<MetaFac.CG5.Parsing.ParserInputs<TEnum>, MetaFac.CG5.Parsing.ParserResult<TNode>> parserB)
+            where TEnum :  struct { }
+        public static MetaFac.CG5.Parsing.ParserResult<TNode> FirstOf<TEnum, TNode>(this MetaFac.CG5.Parsing.ParserInputs<TEnum> input, System.Func<MetaFac.CG5.Parsing.ParserInputs<TEnum>, MetaFac.CG5.Parsing.ParserResult<TNode>> parserA, System.Func<MetaFac.CG5.Parsing.ParserInputs<TEnum>, MetaFac.CG5.Parsing.ParserResult<TNode>> parserB, System.Func<MetaFac.CG5.Parsing.ParserInputs<TEnum>, MetaFac.CG5.Parsing.ParserResult<TNode>> parserC)
+            where TEnum :  struct { }
+        public static MetaFac.CG5.Parsing.ParserResult<TNode> OneOrMore<TEnum, TNode>(MetaFac.CG5.Parsing.ParserInputs<TEnum> input, System.Func<MetaFac.CG5.Parsing.ParserInputs<TEnum>, MetaFac.CG5.Parsing.ParserResult<TNode>> leftRightParser, System.Func<MetaFac.CG5.Parsing.ParserInputs<TEnum>, MetaFac.CG5.Parsing.ParserResult<TNode>> operatorParser, System.Func<TNode, TNode, TNode, TNode> combiner)
+            where TEnum :  struct { }
+    }
+    public readonly struct Error
+    {
+        public readonly string Message;
+        public Error(string message) { }
+    }
+    public interface IParser<TEnum, TNode>
+        where TEnum :  struct
+    {
+        MetaFac.CG5.Parsing.ParserResult<TNode> Match(MetaFac.CG5.Parsing.ParserInputs<TEnum> inputs);
+    }
+    public interface ITokenMatcher<TEnum>
+        where TEnum :  struct
+    {
+        System.ValueTuple<int, MetaFac.CG5.Parsing.Token<TEnum>> Match(System.ReadOnlyMemory<char> source);
+    }
+    public abstract class Lexer<T>
+        where T :  struct
+    {
+        protected Lexer(System.Collections.Generic.IEnumerable<MetaFac.CG5.Parsing.ITokenMatcher<T>>? matchers) { }
+        public System.Collections.Generic.IEnumerable<OneOf.OneOf<MetaFac.CG5.Parsing.Error, MetaFac.CG5.Parsing.Token<T>>> GetTokens(System.ReadOnlyMemory<char> source) { }
+        public System.Collections.Generic.IEnumerable<MetaFac.CG5.Parsing.Token<T>> GetTokensOnly(System.ReadOnlyMemory<char> source) { }
+    }
+    public readonly struct ParserInputs<TEnum>
+        where TEnum :  struct
+    {
+        public readonly System.ReadOnlyMemory<MetaFac.CG5.Parsing.Token<TEnum>> Source;
+        public ParserInputs(System.ReadOnlyMemory<MetaFac.CG5.Parsing.Token<TEnum>> source) { }
+        public MetaFac.CG5.Parsing.ParserInputs<TEnum> Consume(int consumed) { }
+    }
+    public readonly struct ParserResult<TNode>
+    {
+        public readonly int Consumed;
+        public readonly bool Matched;
+        public readonly TNode Result;
+        public ParserResult(int consumed, TNode result) { }
+    }
+    public abstract class Parser<TEnum, TNode>
+        where TEnum :  struct
+    {
+        protected Parser(MetaFac.CG5.Parsing.Lexer<TEnum> lexer) { }
+        protected abstract System.Collections.Generic.IEnumerable<MetaFac.CG5.Parsing.Token<TEnum>> OnFilterTokens(System.Collections.Generic.IEnumerable<MetaFac.CG5.Parsing.Token<TEnum>> tokens);
+        protected abstract TNode OnMakeErrorNode(string message);
+        protected abstract bool OnTryMatch(System.ReadOnlyMemory<MetaFac.CG5.Parsing.Token<TEnum>> tokens, out int consumed, out TNode? result);
+        public TNode Parse(System.ReadOnlyMemory<char> source) { }
+    }
+    public readonly struct Token<TEnum>
+        where TEnum :  struct
+    {
+        public readonly TEnum Kind;
+        public readonly System.ReadOnlyMemory<char> Source;
+        public Token(TEnum kind, System.ReadOnlyMemory<char> source) { }
+    }
+}

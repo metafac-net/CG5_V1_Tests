@@ -1,0 +1,1242 @@
+﻿namespace MetaFac.CG5.Expressions
+{
+    public class BinaryExpressionNode : MetaFac.CG5.Expressions.Node, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IBinaryExpressionNode, MetaFac.CG5.Expressions.INode, System.IEquatable<MetaFac.CG5.Expressions.BinaryExpressionNode>
+    {
+        public const int EntityTag = 14;
+        public BinaryExpressionNode() { }
+        public BinaryExpressionNode(MetaFac.CG5.Expressions.BinaryExpressionNode? source) { }
+        public BinaryExpressionNode(MetaFac.CG5.Expressions.IBinaryExpressionNode? source) { }
+        public MetaFac.CG5.Expressions.Node? Left { get; init; }
+        public MetaFac.CG5.Expressions.BinaryOperator Op { get; init; }
+        public MetaFac.CG5.Expressions.Node? Right { get; init; }
+        public virtual bool Equals(MetaFac.CG5.Expressions.BinaryExpressionNode? other) { }
+        public override int GetHashCode() { }
+        protected override int OnGetEntityTag() { }
+        public override string ToString() { }
+        public static MetaFac.CG5.Expressions.BinaryExpressionNode Create(MetaFac.CG5.Expressions.BinaryOperator op, MetaFac.CG5.Expressions.Node left, MetaFac.CG5.Expressions.Node right) { }
+    }
+    public sealed class BinaryExpressionNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.IBinaryExpressionNode, MetaFac.CG5.Expressions.BinaryExpressionNode>
+    {
+        public BinaryExpressionNode_Factory() { }
+        public MetaFac.CG5.Expressions.BinaryExpressionNode Empty { get; }
+        public static MetaFac.CG5.Expressions.BinaryExpressionNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.BinaryExpressionNode? CreateFrom(MetaFac.CG5.Expressions.IBinaryExpressionNode? source) { }
+    }
+    public enum BinaryOperator
+    {
+        None = 0,
+        Pow = 1,
+        Add = 2,
+        Sub = 3,
+        Mul = 4,
+        Div = 5,
+        Mod = 6,
+        LSS = 7,
+        LEQ = 8,
+        GTR = 9,
+        GEQ = 10,
+        EQU = 11,
+        NEQ = 12,
+        Assign = 13,
+        AND = 14,
+        OR = 15,
+    }
+    public class BinaryOperatorNode : MetaFac.CG5.Expressions.OperatorNode, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IBinaryOperatorNode, MetaFac.CG5.Expressions.IConstantNode, MetaFac.CG5.Expressions.INode, MetaFac.CG5.Expressions.IOperatorNode, System.IEquatable<MetaFac.CG5.Expressions.BinaryOperatorNode>
+    {
+        public const int EntityTag = 12;
+        public BinaryOperatorNode() { }
+        public BinaryOperatorNode(MetaFac.CG5.Expressions.BinaryOperatorNode? source) { }
+        public BinaryOperatorNode(MetaFac.CG5.Expressions.IBinaryOperatorNode? source) { }
+        public MetaFac.CG5.Expressions.BinaryOperator Value { get; init; }
+        public virtual bool Equals(MetaFac.CG5.Expressions.BinaryOperatorNode? other) { }
+        public override int GetHashCode() { }
+        protected override int OnGetEntityTag() { }
+        public static MetaFac.CG5.Expressions.BinaryOperatorNode Create(MetaFac.CG5.Expressions.BinaryOperator value) { }
+    }
+    public sealed class BinaryOperatorNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.IBinaryOperatorNode, MetaFac.CG5.Expressions.BinaryOperatorNode>
+    {
+        public BinaryOperatorNode_Factory() { }
+        public MetaFac.CG5.Expressions.BinaryOperatorNode Empty { get; }
+        public static MetaFac.CG5.Expressions.BinaryOperatorNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.BinaryOperatorNode? CreateFrom(MetaFac.CG5.Expressions.IBinaryOperatorNode? source) { }
+    }
+    public class BooleanConstantNode : MetaFac.CG5.Expressions.ConstantNode, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IBooleanConstantNode, MetaFac.CG5.Expressions.IConstantNode, MetaFac.CG5.Expressions.INode, System.IEquatable<MetaFac.CG5.Expressions.BooleanConstantNode>
+    {
+        public const int EntityTag = 5;
+        public BooleanConstantNode() { }
+        public BooleanConstantNode(MetaFac.CG5.Expressions.BooleanConstantNode? source) { }
+        public BooleanConstantNode(MetaFac.CG5.Expressions.IBooleanConstantNode? source) { }
+        public bool Value { get; init; }
+        public virtual bool Equals(MetaFac.CG5.Expressions.BooleanConstantNode? other) { }
+        public override int GetHashCode() { }
+        protected override int OnGetEntityTag() { }
+        public override string ToString() { }
+        public static MetaFac.CG5.Expressions.BooleanConstantNode Create(System.ReadOnlyMemory<char> source) { }
+    }
+    public sealed class BooleanConstantNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.IBooleanConstantNode, MetaFac.CG5.Expressions.BooleanConstantNode>
+    {
+        public BooleanConstantNode_Factory() { }
+        public MetaFac.CG5.Expressions.BooleanConstantNode Empty { get; }
+        public static MetaFac.CG5.Expressions.BooleanConstantNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.BooleanConstantNode? CreateFrom(MetaFac.CG5.Expressions.IBooleanConstantNode? source) { }
+    }
+    public sealed class CG5Lexer : MetaFac.CG5.Parsing.Lexer<MetaFac.CG5.Expressions.CG5Token>
+    {
+        public CG5Lexer() { }
+    }
+    public sealed class CG5Parser : MetaFac.CG5.Parsing.Parser<MetaFac.CG5.Expressions.CG5Token, MetaFac.CG5.Expressions.Node>
+    {
+        public CG5Parser() { }
+        protected override System.Collections.Generic.IEnumerable<MetaFac.CG5.Parsing.Token<MetaFac.CG5.Expressions.CG5Token>> OnFilterTokens(System.Collections.Generic.IEnumerable<MetaFac.CG5.Parsing.Token<MetaFac.CG5.Expressions.CG5Token>> tokens) { }
+        protected override MetaFac.CG5.Expressions.Node OnMakeErrorNode(string message) { }
+        protected override bool OnTryMatch(System.ReadOnlyMemory<MetaFac.CG5.Parsing.Token<MetaFac.CG5.Expressions.CG5Token>> tokens, out int consumed, out MetaFac.CG5.Expressions.Node? result) { }
+    }
+    public enum CG5Token
+    {
+        Non = 0,
+        EOL = 1,
+        Spc = 2,
+        Null = 16,
+        Bool = 17,
+        Num = 18,
+        Str = 19,
+        Chr = 20,
+        Var = 21,
+        Bang = 33,
+        Quote = 34,
+        Hash = 35,
+        Percent = 37,
+        Amp = 38,
+        Tick = 39,
+        LParen = 40,
+        RParen = 41,
+        Star = 42,
+        Plus = 43,
+        Comma = 44,
+        Dash = 45,
+        Dot = 46,
+        Slash = 47,
+        Colon = 58,
+        Semi = 59,
+        LAngle = 60,
+        RAngle = 62,
+        Quest = 63,
+        At = 64,
+        LBrack = 91,
+        Slosh = 92,
+        RBrack = 93,
+        Hat = 94,
+        Under = 95,
+        Grave = 96,
+        LBrace = 123,
+        Pipe = 124,
+        RBrace = 125,
+        Tilde = 126,
+        EQU = 127,
+        NEQ = 128,
+        GEQ = 129,
+        LEQ = 130,
+        Assign = 131,
+        Power = 132,
+        AND = 133,
+        OR = 134,
+    }
+    public static class CG5TokenExtensions
+    {
+        public static bool IsCodeToken(this MetaFac.CG5.Parsing.Token<MetaFac.CG5.Expressions.CG5Token> token) { }
+        public static System.Collections.Generic.IEnumerable<MetaFac.CG5.Parsing.Token<MetaFac.CG5.Expressions.CG5Token>> SelectCodeTokens(this System.Collections.Generic.IEnumerable<MetaFac.CG5.Parsing.Token<MetaFac.CG5.Expressions.CG5Token>> tokens) { }
+        public static string ToDisplayString(this MetaFac.CG5.Parsing.Token<MetaFac.CG5.Expressions.CG5Token> token) { }
+        public static System.Collections.Generic.IEnumerable<string> ToDisplayStrings(this System.Collections.Generic.IEnumerable<MetaFac.CG5.Parsing.Token<MetaFac.CG5.Expressions.CG5Token>> tokens) { }
+    }
+    public abstract class ConstantNode : MetaFac.CG5.Expressions.Node, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IConstantNode, MetaFac.CG5.Expressions.INode, System.IEquatable<MetaFac.CG5.Expressions.ConstantNode>
+    {
+        public const int EntityTag = 3;
+        public ConstantNode() { }
+        public ConstantNode(MetaFac.CG5.Expressions.ConstantNode? source) { }
+        public ConstantNode(MetaFac.CG5.Expressions.IConstantNode? source) { }
+        public virtual bool Equals(MetaFac.CG5.Expressions.ConstantNode? other) { }
+        public override int GetHashCode() { }
+        protected override int OnGetEntityTag() { }
+    }
+    public sealed class ConstantNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.IConstantNode, MetaFac.CG5.Expressions.ConstantNode>
+    {
+        public ConstantNode_Factory() { }
+        public MetaFac.CG5.Expressions.ConstantNode Empty { get; }
+        public static MetaFac.CG5.Expressions.ConstantNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.ConstantNode? CreateFrom(MetaFac.CG5.Expressions.IConstantNode? source) { }
+    }
+    public class DoubleConstantNode : MetaFac.CG5.Expressions.NumericConstantNode, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IConstantNode, MetaFac.CG5.Expressions.IDoubleConstantNode, MetaFac.CG5.Expressions.INode, MetaFac.CG5.Expressions.INumericConstantNode, System.IEquatable<MetaFac.CG5.Expressions.DoubleConstantNode>
+    {
+        public const int EntityTag = 9;
+        public DoubleConstantNode() { }
+        public DoubleConstantNode(MetaFac.CG5.Expressions.DoubleConstantNode? source) { }
+        public DoubleConstantNode(MetaFac.CG5.Expressions.IDoubleConstantNode? source) { }
+        public double Value { get; init; }
+        public virtual bool Equals(MetaFac.CG5.Expressions.DoubleConstantNode? other) { }
+        public override int GetHashCode() { }
+        protected override int OnGetEntityTag() { }
+        public override string ToString() { }
+    }
+    public sealed class DoubleConstantNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.IDoubleConstantNode, MetaFac.CG5.Expressions.DoubleConstantNode>
+    {
+        public DoubleConstantNode_Factory() { }
+        public MetaFac.CG5.Expressions.DoubleConstantNode Empty { get; }
+        public static MetaFac.CG5.Expressions.DoubleConstantNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.DoubleConstantNode? CreateFrom(MetaFac.CG5.Expressions.IDoubleConstantNode? source) { }
+    }
+    public abstract class EntityBase : MetaFac.CG4.Runtime.IEntityBase, MetaFac.Mutability.IFreezable, System.IEquatable<MetaFac.CG5.Expressions.EntityBase>
+    {
+        public const int EntityTag = 0;
+        public EntityBase() { }
+        public EntityBase(MetaFac.CG4.Runtime.IEntityBase? source) { }
+        public EntityBase(MetaFac.CG5.Expressions.EntityBase? source) { }
+        public virtual bool Equals(MetaFac.CG5.Expressions.EntityBase? other) { }
+        public void Freeze() { }
+        public int GetEntityTag() { }
+        public override int GetHashCode() { }
+        public bool IsFreezable() { }
+        public bool IsFrozen() { }
+        protected abstract int OnGetEntityTag();
+        public bool TryFreeze() { }
+    }
+    public class ErrorNode : MetaFac.CG5.Expressions.Node, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IErrorNode, MetaFac.CG5.Expressions.INode, System.IEquatable<MetaFac.CG5.Expressions.ErrorNode>
+    {
+        public const int EntityTag = 2;
+        public ErrorNode() { }
+        public ErrorNode(MetaFac.CG5.Expressions.ErrorNode? source) { }
+        public ErrorNode(MetaFac.CG5.Expressions.IErrorNode? source) { }
+        public string? Message { get; init; }
+        public virtual bool Equals(MetaFac.CG5.Expressions.ErrorNode? other) { }
+        public override int GetHashCode() { }
+        protected override int OnGetEntityTag() { }
+    }
+    public sealed class ErrorNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.IErrorNode, MetaFac.CG5.Expressions.ErrorNode>
+    {
+        public ErrorNode_Factory() { }
+        public MetaFac.CG5.Expressions.ErrorNode Empty { get; }
+        public static MetaFac.CG5.Expressions.ErrorNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.ErrorNode? CreateFrom(MetaFac.CG5.Expressions.IErrorNode? source) { }
+    }
+    public interface IBinaryExpressionNode : MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.INode
+    {
+        MetaFac.CG5.Expressions.INode? Left { get; }
+        MetaFac.CG5.Expressions.BinaryOperator Op { get; }
+        MetaFac.CG5.Expressions.INode? Right { get; }
+    }
+    public interface IBinaryOperatorNode : MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IConstantNode, MetaFac.CG5.Expressions.INode, MetaFac.CG5.Expressions.IOperatorNode
+    {
+        MetaFac.CG5.Expressions.BinaryOperator Value { get; }
+    }
+    public interface IBooleanConstantNode : MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IConstantNode, MetaFac.CG5.Expressions.INode
+    {
+        bool Value { get; }
+    }
+    public interface IConstantNode : MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.INode { }
+    public interface IDoubleConstantNode : MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IConstantNode, MetaFac.CG5.Expressions.INode, MetaFac.CG5.Expressions.INumericConstantNode
+    {
+        double Value { get; }
+    }
+    public interface IErrorNode : MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.INode
+    {
+        string? Message { get; }
+    }
+    public interface IIntegerConstantNode : MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IConstantNode, MetaFac.CG5.Expressions.INode, MetaFac.CG5.Expressions.INumericConstantNode
+    {
+        long Value { get; }
+    }
+    public interface INode : MetaFac.CG4.Runtime.IEntityBase { }
+    public interface INullConstantNode : MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IConstantNode, MetaFac.CG5.Expressions.INode { }
+    public interface INumericConstantNode : MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IConstantNode, MetaFac.CG5.Expressions.INode { }
+    public interface IOperatorNode : MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IConstantNode, MetaFac.CG5.Expressions.INode { }
+    public interface IStringConstantNode : MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IConstantNode, MetaFac.CG5.Expressions.INode
+    {
+        string? Value { get; }
+    }
+    public interface ITertiaryExpressionNode : MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.INode
+    {
+        MetaFac.CG5.Expressions.INode? Node1 { get; }
+        MetaFac.CG5.Expressions.INode? Node2 { get; }
+        MetaFac.CG5.Expressions.INode? Node3 { get; }
+        MetaFac.CG5.Expressions.TertiaryOperator Op { get; }
+    }
+    public interface IUnaryExpressionNode : MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.INode
+    {
+        MetaFac.CG5.Expressions.UnaryOperator Op { get; }
+        MetaFac.CG5.Expressions.INode? Operand { get; }
+    }
+    public interface IVariableNode : MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.INode
+    {
+        string? Name { get; }
+    }
+    public class IntegerConstantNode : MetaFac.CG5.Expressions.NumericConstantNode, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IConstantNode, MetaFac.CG5.Expressions.IIntegerConstantNode, MetaFac.CG5.Expressions.INode, MetaFac.CG5.Expressions.INumericConstantNode, System.IEquatable<MetaFac.CG5.Expressions.IntegerConstantNode>
+    {
+        public const int EntityTag = 8;
+        public IntegerConstantNode() { }
+        public IntegerConstantNode(MetaFac.CG5.Expressions.IIntegerConstantNode? source) { }
+        public IntegerConstantNode(MetaFac.CG5.Expressions.IntegerConstantNode? source) { }
+        public long Value { get; init; }
+        public virtual bool Equals(MetaFac.CG5.Expressions.IntegerConstantNode? other) { }
+        public override int GetHashCode() { }
+        protected override int OnGetEntityTag() { }
+        public override string ToString() { }
+    }
+    public sealed class IntegerConstantNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.IIntegerConstantNode, MetaFac.CG5.Expressions.IntegerConstantNode>
+    {
+        public IntegerConstantNode_Factory() { }
+        public MetaFac.CG5.Expressions.IntegerConstantNode Empty { get; }
+        public static MetaFac.CG5.Expressions.IntegerConstantNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.IntegerConstantNode? CreateFrom(MetaFac.CG5.Expressions.IIntegerConstantNode? source) { }
+    }
+    public abstract class Node : MetaFac.CG5.Expressions.EntityBase, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.INode, System.IEquatable<MetaFac.CG5.Expressions.Node>
+    {
+        public const int EntityTag = 1;
+        public Node() { }
+        public Node(MetaFac.CG5.Expressions.INode? source) { }
+        public Node(MetaFac.CG5.Expressions.Node? source) { }
+        public virtual bool Equals(MetaFac.CG5.Expressions.Node? other) { }
+        public override int GetHashCode() { }
+        protected override int OnGetEntityTag() { }
+    }
+    public static class NodeHelpers
+    {
+        public static object? Evaluate(this MetaFac.CG5.Expressions.Node? node, System.Collections.Generic.IDictionary<string, object?> variables) { }
+    }
+    public sealed class Node_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.INode, MetaFac.CG5.Expressions.Node>
+    {
+        public Node_Factory() { }
+        public MetaFac.CG5.Expressions.Node Empty { get; }
+        public static MetaFac.CG5.Expressions.Node_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.Node? CreateFrom(MetaFac.CG5.Expressions.INode? source) { }
+    }
+    public class NullConstantNode : MetaFac.CG5.Expressions.ConstantNode, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IConstantNode, MetaFac.CG5.Expressions.INode, MetaFac.CG5.Expressions.INullConstantNode, System.IEquatable<MetaFac.CG5.Expressions.NullConstantNode>
+    {
+        public const int EntityTag = 4;
+        public NullConstantNode() { }
+        public NullConstantNode(MetaFac.CG5.Expressions.INullConstantNode? source) { }
+        public NullConstantNode(MetaFac.CG5.Expressions.NullConstantNode? source) { }
+        public virtual bool Equals(MetaFac.CG5.Expressions.NullConstantNode? other) { }
+        public override int GetHashCode() { }
+        protected override int OnGetEntityTag() { }
+        public override string ToString() { }
+        public static MetaFac.CG5.Expressions.NullConstantNode Create(System.ReadOnlyMemory<char> source) { }
+    }
+    public sealed class NullConstantNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.INullConstantNode, MetaFac.CG5.Expressions.NullConstantNode>
+    {
+        public NullConstantNode_Factory() { }
+        public MetaFac.CG5.Expressions.NullConstantNode Empty { get; }
+        public static MetaFac.CG5.Expressions.NullConstantNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.NullConstantNode? CreateFrom(MetaFac.CG5.Expressions.INullConstantNode? source) { }
+    }
+    public abstract class NumericConstantNode : MetaFac.CG5.Expressions.ConstantNode, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IConstantNode, MetaFac.CG5.Expressions.INode, MetaFac.CG5.Expressions.INumericConstantNode, System.IEquatable<MetaFac.CG5.Expressions.NumericConstantNode>
+    {
+        public const int EntityTag = 7;
+        public NumericConstantNode() { }
+        public NumericConstantNode(MetaFac.CG5.Expressions.INumericConstantNode? source) { }
+        public NumericConstantNode(MetaFac.CG5.Expressions.NumericConstantNode? source) { }
+        public virtual bool Equals(MetaFac.CG5.Expressions.NumericConstantNode? other) { }
+        public override int GetHashCode() { }
+        protected override int OnGetEntityTag() { }
+        public static MetaFac.CG5.Expressions.NumericConstantNode Create(double value) { }
+        public static MetaFac.CG5.Expressions.NumericConstantNode Create(long value) { }
+        public static MetaFac.CG5.Expressions.NumericConstantNode Create(System.ReadOnlyMemory<char> source) { }
+    }
+    public sealed class NumericConstantNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.INumericConstantNode, MetaFac.CG5.Expressions.NumericConstantNode>
+    {
+        public NumericConstantNode_Factory() { }
+        public MetaFac.CG5.Expressions.NumericConstantNode Empty { get; }
+        public static MetaFac.CG5.Expressions.NumericConstantNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.NumericConstantNode? CreateFrom(MetaFac.CG5.Expressions.INumericConstantNode? source) { }
+    }
+    public abstract class OperatorNode : MetaFac.CG5.Expressions.ConstantNode, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IConstantNode, MetaFac.CG5.Expressions.INode, MetaFac.CG5.Expressions.IOperatorNode, System.IEquatable<MetaFac.CG5.Expressions.OperatorNode>
+    {
+        public const int EntityTag = 11;
+        public OperatorNode() { }
+        public OperatorNode(MetaFac.CG5.Expressions.IOperatorNode? source) { }
+        public OperatorNode(MetaFac.CG5.Expressions.OperatorNode? source) { }
+        public virtual bool Equals(MetaFac.CG5.Expressions.OperatorNode? other) { }
+        public override int GetHashCode() { }
+        protected override int OnGetEntityTag() { }
+    }
+    public sealed class OperatorNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.IOperatorNode, MetaFac.CG5.Expressions.OperatorNode>
+    {
+        public OperatorNode_Factory() { }
+        public MetaFac.CG5.Expressions.OperatorNode Empty { get; }
+        public static MetaFac.CG5.Expressions.OperatorNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.OperatorNode? CreateFrom(MetaFac.CG5.Expressions.IOperatorNode? source) { }
+    }
+    public class StringConstantNode : MetaFac.CG5.Expressions.ConstantNode, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IConstantNode, MetaFac.CG5.Expressions.INode, MetaFac.CG5.Expressions.IStringConstantNode, System.IEquatable<MetaFac.CG5.Expressions.StringConstantNode>
+    {
+        public const int EntityTag = 6;
+        public StringConstantNode() { }
+        public StringConstantNode(MetaFac.CG5.Expressions.IStringConstantNode? source) { }
+        public StringConstantNode(MetaFac.CG5.Expressions.StringConstantNode? source) { }
+        public string? Value { get; init; }
+        public virtual bool Equals(MetaFac.CG5.Expressions.StringConstantNode? other) { }
+        public override int GetHashCode() { }
+        protected override int OnGetEntityTag() { }
+        public static MetaFac.CG5.Expressions.StringConstantNode Create(System.ReadOnlyMemory<char> source) { }
+        public static MetaFac.CG5.Expressions.StringConstantNode Create(string value) { }
+    }
+    public sealed class StringConstantNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.IStringConstantNode, MetaFac.CG5.Expressions.StringConstantNode>
+    {
+        public StringConstantNode_Factory() { }
+        public MetaFac.CG5.Expressions.StringConstantNode Empty { get; }
+        public static MetaFac.CG5.Expressions.StringConstantNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.StringConstantNode? CreateFrom(MetaFac.CG5.Expressions.IStringConstantNode? source) { }
+    }
+    public class SymbolConstantNode : MetaFac.CG5.Expressions.ConstantNode, System.IEquatable<MetaFac.CG5.Expressions.SymbolConstantNode>
+    {
+        public SymbolConstantNode() { }
+        public MetaFac.CG5.Parsing.Token<MetaFac.CG5.Expressions.CG5Token> Value { get; init; }
+        public override string ToString() { }
+        public static MetaFac.CG5.Expressions.SymbolConstantNode Create(MetaFac.CG5.Parsing.Token<MetaFac.CG5.Expressions.CG5Token> value) { }
+    }
+    public class TertiaryExpressionNode : MetaFac.CG5.Expressions.Node, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.INode, MetaFac.CG5.Expressions.ITertiaryExpressionNode, System.IEquatable<MetaFac.CG5.Expressions.TertiaryExpressionNode>
+    {
+        public const int EntityTag = 15;
+        public TertiaryExpressionNode() { }
+        public TertiaryExpressionNode(MetaFac.CG5.Expressions.ITertiaryExpressionNode? source) { }
+        public TertiaryExpressionNode(MetaFac.CG5.Expressions.TertiaryExpressionNode? source) { }
+        public MetaFac.CG5.Expressions.Node? Node1 { get; init; }
+        public MetaFac.CG5.Expressions.Node? Node2 { get; init; }
+        public MetaFac.CG5.Expressions.Node? Node3 { get; init; }
+        public MetaFac.CG5.Expressions.TertiaryOperator Op { get; init; }
+        public virtual bool Equals(MetaFac.CG5.Expressions.TertiaryExpressionNode? other) { }
+        public override int GetHashCode() { }
+        protected override int OnGetEntityTag() { }
+        public override string ToString() { }
+        public static MetaFac.CG5.Expressions.TertiaryExpressionNode Create(MetaFac.CG5.Expressions.TertiaryOperator op, MetaFac.CG5.Expressions.Node n1, MetaFac.CG5.Expressions.Node n2, MetaFac.CG5.Expressions.Node n3) { }
+    }
+    public sealed class TertiaryExpressionNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.ITertiaryExpressionNode, MetaFac.CG5.Expressions.TertiaryExpressionNode>
+    {
+        public TertiaryExpressionNode_Factory() { }
+        public MetaFac.CG5.Expressions.TertiaryExpressionNode Empty { get; }
+        public static MetaFac.CG5.Expressions.TertiaryExpressionNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.TertiaryExpressionNode? CreateFrom(MetaFac.CG5.Expressions.ITertiaryExpressionNode? source) { }
+    }
+    public enum TertiaryOperator
+    {
+        None = 0,
+        IfThenElse = 1,
+    }
+    public class UnaryExpressionNode : MetaFac.CG5.Expressions.Node, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.INode, MetaFac.CG5.Expressions.IUnaryExpressionNode, System.IEquatable<MetaFac.CG5.Expressions.UnaryExpressionNode>
+    {
+        public const int EntityTag = 13;
+        public UnaryExpressionNode() { }
+        public UnaryExpressionNode(MetaFac.CG5.Expressions.IUnaryExpressionNode? source) { }
+        public UnaryExpressionNode(MetaFac.CG5.Expressions.UnaryExpressionNode? source) { }
+        public MetaFac.CG5.Expressions.UnaryOperator Op { get; init; }
+        public MetaFac.CG5.Expressions.Node? Operand { get; init; }
+        public virtual bool Equals(MetaFac.CG5.Expressions.UnaryExpressionNode? other) { }
+        public override int GetHashCode() { }
+        protected override int OnGetEntityTag() { }
+    }
+    public sealed class UnaryExpressionNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.IUnaryExpressionNode, MetaFac.CG5.Expressions.UnaryExpressionNode>
+    {
+        public UnaryExpressionNode_Factory() { }
+        public MetaFac.CG5.Expressions.UnaryExpressionNode Empty { get; }
+        public static MetaFac.CG5.Expressions.UnaryExpressionNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.UnaryExpressionNode? CreateFrom(MetaFac.CG5.Expressions.IUnaryExpressionNode? source) { }
+    }
+    public enum UnaryOperator
+    {
+        None = 0,
+        Plus = 1,
+        Minus = 2,
+        LogicalNot = 3,
+        BitwiseNot = 4,
+    }
+    public class VariableNode : MetaFac.CG5.Expressions.Node, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.INode, MetaFac.CG5.Expressions.IVariableNode, System.IEquatable<MetaFac.CG5.Expressions.VariableNode>
+    {
+        public const int EntityTag = 10;
+        public VariableNode() { }
+        public VariableNode(MetaFac.CG5.Expressions.IVariableNode? source) { }
+        public VariableNode(MetaFac.CG5.Expressions.VariableNode? source) { }
+        public string? Name { get; init; }
+        public virtual bool Equals(MetaFac.CG5.Expressions.VariableNode? other) { }
+        public override int GetHashCode() { }
+        protected override int OnGetEntityTag() { }
+        public override string ToString() { }
+        public static MetaFac.CG5.Expressions.VariableNode Create(string name) { }
+    }
+    public sealed class VariableNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.IVariableNode, MetaFac.CG5.Expressions.VariableNode>
+    {
+        public VariableNode_Factory() { }
+        public MetaFac.CG5.Expressions.VariableNode Empty { get; }
+        public static MetaFac.CG5.Expressions.VariableNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.VariableNode? CreateFrom(MetaFac.CG5.Expressions.IVariableNode? source) { }
+    }
+}
+namespace MetaFac.CG5.Expressions.JsonSystemText
+{
+    public class BinaryExpressionNode : MetaFac.CG5.Expressions.JsonSystemText.Node, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IBinaryExpressionNode, MetaFac.CG5.Expressions.INode, System.IEquatable<MetaFac.CG5.Expressions.JsonSystemText.BinaryExpressionNode>
+    {
+        public const int EntityTag = 14;
+        public BinaryExpressionNode() { }
+        public BinaryExpressionNode(MetaFac.CG5.Expressions.IBinaryExpressionNode? source) { }
+        public BinaryExpressionNode(MetaFac.CG5.Expressions.JsonSystemText.BinaryExpressionNode? source) { }
+        public MetaFac.CG5.Expressions.JsonSystemText.Node? Left { get; set; }
+        public MetaFac.CG5.Expressions.BinaryOperator Op { get; set; }
+        public MetaFac.CG5.Expressions.JsonSystemText.Node? Right { get; set; }
+        public void CopyFrom(MetaFac.CG5.Expressions.IBinaryExpressionNode? source) { }
+        public bool Equals(MetaFac.CG5.Expressions.JsonSystemText.BinaryExpressionNode? other) { }
+        public override bool Equals(object? obj) { }
+        public override int GetHashCode() { }
+        protected override int OnGetEntityTag() { }
+    }
+    public sealed class BinaryExpressionNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.IBinaryExpressionNode, MetaFac.CG5.Expressions.JsonSystemText.BinaryExpressionNode>
+    {
+        public BinaryExpressionNode_Factory() { }
+        public MetaFac.CG5.Expressions.JsonSystemText.BinaryExpressionNode Empty { get; }
+        public static MetaFac.CG5.Expressions.JsonSystemText.BinaryExpressionNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.JsonSystemText.BinaryExpressionNode? CreateFrom(MetaFac.CG5.Expressions.IBinaryExpressionNode? source) { }
+    }
+    public class BinaryOperatorNode : MetaFac.CG5.Expressions.JsonSystemText.OperatorNode, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IBinaryOperatorNode, MetaFac.CG5.Expressions.IConstantNode, MetaFac.CG5.Expressions.INode, MetaFac.CG5.Expressions.IOperatorNode, System.IEquatable<MetaFac.CG5.Expressions.JsonSystemText.BinaryOperatorNode>
+    {
+        public const int EntityTag = 12;
+        public BinaryOperatorNode() { }
+        public BinaryOperatorNode(MetaFac.CG5.Expressions.IBinaryOperatorNode? source) { }
+        public BinaryOperatorNode(MetaFac.CG5.Expressions.JsonSystemText.BinaryOperatorNode? source) { }
+        public MetaFac.CG5.Expressions.BinaryOperator Value { get; set; }
+        public void CopyFrom(MetaFac.CG5.Expressions.IBinaryOperatorNode? source) { }
+        public bool Equals(MetaFac.CG5.Expressions.JsonSystemText.BinaryOperatorNode? other) { }
+        public override bool Equals(object? obj) { }
+        public override int GetHashCode() { }
+        protected override int OnGetEntityTag() { }
+    }
+    public sealed class BinaryOperatorNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.IBinaryOperatorNode, MetaFac.CG5.Expressions.JsonSystemText.BinaryOperatorNode>
+    {
+        public BinaryOperatorNode_Factory() { }
+        public MetaFac.CG5.Expressions.JsonSystemText.BinaryOperatorNode Empty { get; }
+        public static MetaFac.CG5.Expressions.JsonSystemText.BinaryOperatorNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.JsonSystemText.BinaryOperatorNode? CreateFrom(MetaFac.CG5.Expressions.IBinaryOperatorNode? source) { }
+    }
+    public class BooleanConstantNode : MetaFac.CG5.Expressions.JsonSystemText.ConstantNode, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IBooleanConstantNode, MetaFac.CG5.Expressions.IConstantNode, MetaFac.CG5.Expressions.INode, System.IEquatable<MetaFac.CG5.Expressions.JsonSystemText.BooleanConstantNode>
+    {
+        public const int EntityTag = 5;
+        public BooleanConstantNode() { }
+        public BooleanConstantNode(MetaFac.CG5.Expressions.IBooleanConstantNode? source) { }
+        public BooleanConstantNode(MetaFac.CG5.Expressions.JsonSystemText.BooleanConstantNode? source) { }
+        public bool Value { get; set; }
+        public void CopyFrom(MetaFac.CG5.Expressions.IBooleanConstantNode? source) { }
+        public bool Equals(MetaFac.CG5.Expressions.JsonSystemText.BooleanConstantNode? other) { }
+        public override bool Equals(object? obj) { }
+        public override int GetHashCode() { }
+        protected override int OnGetEntityTag() { }
+    }
+    public sealed class BooleanConstantNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.IBooleanConstantNode, MetaFac.CG5.Expressions.JsonSystemText.BooleanConstantNode>
+    {
+        public BooleanConstantNode_Factory() { }
+        public MetaFac.CG5.Expressions.JsonSystemText.BooleanConstantNode Empty { get; }
+        public static MetaFac.CG5.Expressions.JsonSystemText.BooleanConstantNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.JsonSystemText.BooleanConstantNode? CreateFrom(MetaFac.CG5.Expressions.IBooleanConstantNode? source) { }
+    }
+    [System.Text.Json.Serialization.JsonDerivedType(typeof(MetaFac.CG5.Expressions.JsonSystemText.BinaryOperatorNode?), 12)]
+    [System.Text.Json.Serialization.JsonDerivedType(typeof(MetaFac.CG5.Expressions.JsonSystemText.BooleanConstantNode?), 5)]
+    [System.Text.Json.Serialization.JsonDerivedType(typeof(MetaFac.CG5.Expressions.JsonSystemText.DoubleConstantNode?), 9)]
+    [System.Text.Json.Serialization.JsonDerivedType(typeof(MetaFac.CG5.Expressions.JsonSystemText.IntegerConstantNode?), 8)]
+    [System.Text.Json.Serialization.JsonDerivedType(typeof(MetaFac.CG5.Expressions.JsonSystemText.NullConstantNode?), 4)]
+    [System.Text.Json.Serialization.JsonDerivedType(typeof(MetaFac.CG5.Expressions.JsonSystemText.NumericConstantNode?), 7)]
+    [System.Text.Json.Serialization.JsonDerivedType(typeof(MetaFac.CG5.Expressions.JsonSystemText.OperatorNode?), 11)]
+    [System.Text.Json.Serialization.JsonDerivedType(typeof(MetaFac.CG5.Expressions.JsonSystemText.StringConstantNode?), 6)]
+    public class ConstantNode : MetaFac.CG5.Expressions.JsonSystemText.Node, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IConstantNode, MetaFac.CG5.Expressions.INode, System.IEquatable<MetaFac.CG5.Expressions.JsonSystemText.ConstantNode>
+    {
+        public const int EntityTag = 3;
+        public ConstantNode() { }
+        public ConstantNode(MetaFac.CG5.Expressions.IConstantNode? source) { }
+        public ConstantNode(MetaFac.CG5.Expressions.JsonSystemText.ConstantNode? source) { }
+        public void CopyFrom(MetaFac.CG5.Expressions.IConstantNode? source) { }
+        public bool Equals(MetaFac.CG5.Expressions.JsonSystemText.ConstantNode? other) { }
+        public override bool Equals(object? obj) { }
+        public override int GetHashCode() { }
+        protected override int OnGetEntityTag() { }
+    }
+    public sealed class ConstantNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.IConstantNode, MetaFac.CG5.Expressions.JsonSystemText.ConstantNode>
+    {
+        public ConstantNode_Factory() { }
+        public MetaFac.CG5.Expressions.JsonSystemText.ConstantNode Empty { get; }
+        public static MetaFac.CG5.Expressions.JsonSystemText.ConstantNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.JsonSystemText.ConstantNode? CreateFrom(MetaFac.CG5.Expressions.IConstantNode? source) { }
+    }
+    public class DoubleConstantNode : MetaFac.CG5.Expressions.JsonSystemText.NumericConstantNode, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IConstantNode, MetaFac.CG5.Expressions.IDoubleConstantNode, MetaFac.CG5.Expressions.INode, MetaFac.CG5.Expressions.INumericConstantNode, System.IEquatable<MetaFac.CG5.Expressions.JsonSystemText.DoubleConstantNode>
+    {
+        public const int EntityTag = 9;
+        public DoubleConstantNode() { }
+        public DoubleConstantNode(MetaFac.CG5.Expressions.IDoubleConstantNode? source) { }
+        public DoubleConstantNode(MetaFac.CG5.Expressions.JsonSystemText.DoubleConstantNode? source) { }
+        public double Value { get; set; }
+        public void CopyFrom(MetaFac.CG5.Expressions.IDoubleConstantNode? source) { }
+        public bool Equals(MetaFac.CG5.Expressions.JsonSystemText.DoubleConstantNode? other) { }
+        public override bool Equals(object? obj) { }
+        public override int GetHashCode() { }
+        protected override int OnGetEntityTag() { }
+    }
+    public sealed class DoubleConstantNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.IDoubleConstantNode, MetaFac.CG5.Expressions.JsonSystemText.DoubleConstantNode>
+    {
+        public DoubleConstantNode_Factory() { }
+        public MetaFac.CG5.Expressions.JsonSystemText.DoubleConstantNode Empty { get; }
+        public static MetaFac.CG5.Expressions.JsonSystemText.DoubleConstantNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.JsonSystemText.DoubleConstantNode? CreateFrom(MetaFac.CG5.Expressions.IDoubleConstantNode? source) { }
+    }
+    public abstract class EntityBase : MetaFac.CG4.Runtime.IEntityBase, MetaFac.Mutability.IFreezable
+    {
+        public const int EntityTag = 0;
+        public EntityBase() { }
+        public EntityBase(MetaFac.CG4.Runtime.IEntityBase? source) { }
+        public EntityBase(MetaFac.CG5.Expressions.JsonSystemText.EntityBase? source) { }
+        public static MetaFac.CG5.Expressions.JsonSystemText.EntityBase Empty { get; }
+        public void CopyFrom(MetaFac.CG4.Runtime.IEntityBase? source) { }
+        public bool Equals(MetaFac.CG5.Expressions.JsonSystemText.EntityBase? other) { }
+        public void Freeze() { }
+        public int GetEntityTag() { }
+        public override int GetHashCode() { }
+        public bool IsFreezable() { }
+        public bool IsFrozen() { }
+        protected abstract int OnGetEntityTag();
+        public bool TryFreeze() { }
+    }
+    public class ErrorNode : MetaFac.CG5.Expressions.JsonSystemText.Node, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IErrorNode, MetaFac.CG5.Expressions.INode, System.IEquatable<MetaFac.CG5.Expressions.JsonSystemText.ErrorNode>
+    {
+        public const int EntityTag = 2;
+        public ErrorNode() { }
+        public ErrorNode(MetaFac.CG5.Expressions.IErrorNode? source) { }
+        public ErrorNode(MetaFac.CG5.Expressions.JsonSystemText.ErrorNode? source) { }
+        public string? Message { get; set; }
+        public void CopyFrom(MetaFac.CG5.Expressions.IErrorNode? source) { }
+        public bool Equals(MetaFac.CG5.Expressions.JsonSystemText.ErrorNode? other) { }
+        public override bool Equals(object? obj) { }
+        public override int GetHashCode() { }
+        protected override int OnGetEntityTag() { }
+    }
+    public sealed class ErrorNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.IErrorNode, MetaFac.CG5.Expressions.JsonSystemText.ErrorNode>
+    {
+        public ErrorNode_Factory() { }
+        public MetaFac.CG5.Expressions.JsonSystemText.ErrorNode Empty { get; }
+        public static MetaFac.CG5.Expressions.JsonSystemText.ErrorNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.JsonSystemText.ErrorNode? CreateFrom(MetaFac.CG5.Expressions.IErrorNode? source) { }
+    }
+    public class IntegerConstantNode : MetaFac.CG5.Expressions.JsonSystemText.NumericConstantNode, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IConstantNode, MetaFac.CG5.Expressions.IIntegerConstantNode, MetaFac.CG5.Expressions.INode, MetaFac.CG5.Expressions.INumericConstantNode, System.IEquatable<MetaFac.CG5.Expressions.JsonSystemText.IntegerConstantNode>
+    {
+        public const int EntityTag = 8;
+        public IntegerConstantNode() { }
+        public IntegerConstantNode(MetaFac.CG5.Expressions.IIntegerConstantNode? source) { }
+        public IntegerConstantNode(MetaFac.CG5.Expressions.JsonSystemText.IntegerConstantNode? source) { }
+        public long Value { get; set; }
+        public void CopyFrom(MetaFac.CG5.Expressions.IIntegerConstantNode? source) { }
+        public bool Equals(MetaFac.CG5.Expressions.JsonSystemText.IntegerConstantNode? other) { }
+        public override bool Equals(object? obj) { }
+        public override int GetHashCode() { }
+        protected override int OnGetEntityTag() { }
+    }
+    public sealed class IntegerConstantNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.IIntegerConstantNode, MetaFac.CG5.Expressions.JsonSystemText.IntegerConstantNode>
+    {
+        public IntegerConstantNode_Factory() { }
+        public MetaFac.CG5.Expressions.JsonSystemText.IntegerConstantNode Empty { get; }
+        public static MetaFac.CG5.Expressions.JsonSystemText.IntegerConstantNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.JsonSystemText.IntegerConstantNode? CreateFrom(MetaFac.CG5.Expressions.IIntegerConstantNode? source) { }
+    }
+    [System.Text.Json.Serialization.JsonDerivedType(typeof(MetaFac.CG5.Expressions.JsonSystemText.BinaryExpressionNode?), 14)]
+    [System.Text.Json.Serialization.JsonDerivedType(typeof(MetaFac.CG5.Expressions.JsonSystemText.BinaryOperatorNode?), 12)]
+    [System.Text.Json.Serialization.JsonDerivedType(typeof(MetaFac.CG5.Expressions.JsonSystemText.BooleanConstantNode?), 5)]
+    [System.Text.Json.Serialization.JsonDerivedType(typeof(MetaFac.CG5.Expressions.JsonSystemText.ConstantNode?), 3)]
+    [System.Text.Json.Serialization.JsonDerivedType(typeof(MetaFac.CG5.Expressions.JsonSystemText.DoubleConstantNode?), 9)]
+    [System.Text.Json.Serialization.JsonDerivedType(typeof(MetaFac.CG5.Expressions.JsonSystemText.ErrorNode?), 2)]
+    [System.Text.Json.Serialization.JsonDerivedType(typeof(MetaFac.CG5.Expressions.JsonSystemText.IntegerConstantNode?), 8)]
+    [System.Text.Json.Serialization.JsonDerivedType(typeof(MetaFac.CG5.Expressions.JsonSystemText.NullConstantNode?), 4)]
+    [System.Text.Json.Serialization.JsonDerivedType(typeof(MetaFac.CG5.Expressions.JsonSystemText.NumericConstantNode?), 7)]
+    [System.Text.Json.Serialization.JsonDerivedType(typeof(MetaFac.CG5.Expressions.JsonSystemText.OperatorNode?), 11)]
+    [System.Text.Json.Serialization.JsonDerivedType(typeof(MetaFac.CG5.Expressions.JsonSystemText.StringConstantNode?), 6)]
+    [System.Text.Json.Serialization.JsonDerivedType(typeof(MetaFac.CG5.Expressions.JsonSystemText.TertiaryExpressionNode?), 15)]
+    [System.Text.Json.Serialization.JsonDerivedType(typeof(MetaFac.CG5.Expressions.JsonSystemText.UnaryExpressionNode?), 13)]
+    [System.Text.Json.Serialization.JsonDerivedType(typeof(MetaFac.CG5.Expressions.JsonSystemText.VariableNode?), 10)]
+    public class Node : MetaFac.CG5.Expressions.JsonSystemText.EntityBase, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.INode, System.IEquatable<MetaFac.CG5.Expressions.JsonSystemText.Node>
+    {
+        public const int EntityTag = 1;
+        public Node() { }
+        public Node(MetaFac.CG5.Expressions.INode? source) { }
+        public Node(MetaFac.CG5.Expressions.JsonSystemText.Node? source) { }
+        public void CopyFrom(MetaFac.CG5.Expressions.INode? source) { }
+        public bool Equals(MetaFac.CG5.Expressions.JsonSystemText.Node? other) { }
+        public override bool Equals(object? obj) { }
+        public override int GetHashCode() { }
+        protected override int OnGetEntityTag() { }
+    }
+    public sealed class Node_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.INode, MetaFac.CG5.Expressions.JsonSystemText.Node>
+    {
+        public Node_Factory() { }
+        public MetaFac.CG5.Expressions.JsonSystemText.Node Empty { get; }
+        public static MetaFac.CG5.Expressions.JsonSystemText.Node_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.JsonSystemText.Node? CreateFrom(MetaFac.CG5.Expressions.INode? source) { }
+    }
+    public class NullConstantNode : MetaFac.CG5.Expressions.JsonSystemText.ConstantNode, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IConstantNode, MetaFac.CG5.Expressions.INode, MetaFac.CG5.Expressions.INullConstantNode, System.IEquatable<MetaFac.CG5.Expressions.JsonSystemText.NullConstantNode>
+    {
+        public const int EntityTag = 4;
+        public NullConstantNode() { }
+        public NullConstantNode(MetaFac.CG5.Expressions.INullConstantNode? source) { }
+        public NullConstantNode(MetaFac.CG5.Expressions.JsonSystemText.NullConstantNode? source) { }
+        public void CopyFrom(MetaFac.CG5.Expressions.INullConstantNode? source) { }
+        public bool Equals(MetaFac.CG5.Expressions.JsonSystemText.NullConstantNode? other) { }
+        public override bool Equals(object? obj) { }
+        public override int GetHashCode() { }
+        protected override int OnGetEntityTag() { }
+    }
+    public sealed class NullConstantNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.INullConstantNode, MetaFac.CG5.Expressions.JsonSystemText.NullConstantNode>
+    {
+        public NullConstantNode_Factory() { }
+        public MetaFac.CG5.Expressions.JsonSystemText.NullConstantNode Empty { get; }
+        public static MetaFac.CG5.Expressions.JsonSystemText.NullConstantNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.JsonSystemText.NullConstantNode? CreateFrom(MetaFac.CG5.Expressions.INullConstantNode? source) { }
+    }
+    [System.Text.Json.Serialization.JsonDerivedType(typeof(MetaFac.CG5.Expressions.JsonSystemText.DoubleConstantNode), 9)]
+    [System.Text.Json.Serialization.JsonDerivedType(typeof(MetaFac.CG5.Expressions.JsonSystemText.IntegerConstantNode), 8)]
+    public class NumericConstantNode : MetaFac.CG5.Expressions.JsonSystemText.ConstantNode, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IConstantNode, MetaFac.CG5.Expressions.INode, MetaFac.CG5.Expressions.INumericConstantNode, System.IEquatable<MetaFac.CG5.Expressions.JsonSystemText.NumericConstantNode>
+    {
+        public const int EntityTag = 7;
+        public NumericConstantNode() { }
+        public NumericConstantNode(MetaFac.CG5.Expressions.INumericConstantNode? source) { }
+        public NumericConstantNode(MetaFac.CG5.Expressions.JsonSystemText.NumericConstantNode? source) { }
+        public void CopyFrom(MetaFac.CG5.Expressions.INumericConstantNode? source) { }
+        public bool Equals(MetaFac.CG5.Expressions.JsonSystemText.NumericConstantNode? other) { }
+        public override bool Equals(object? obj) { }
+        public override int GetHashCode() { }
+        protected override int OnGetEntityTag() { }
+    }
+    public sealed class NumericConstantNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.INumericConstantNode, MetaFac.CG5.Expressions.JsonSystemText.NumericConstantNode>
+    {
+        public NumericConstantNode_Factory() { }
+        public MetaFac.CG5.Expressions.JsonSystemText.NumericConstantNode Empty { get; }
+        public static MetaFac.CG5.Expressions.JsonSystemText.NumericConstantNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.JsonSystemText.NumericConstantNode? CreateFrom(MetaFac.CG5.Expressions.INumericConstantNode? source) { }
+    }
+    [System.Text.Json.Serialization.JsonDerivedType(typeof(MetaFac.CG5.Expressions.JsonSystemText.BinaryOperatorNode), 12)]
+    public class OperatorNode : MetaFac.CG5.Expressions.JsonSystemText.ConstantNode, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IConstantNode, MetaFac.CG5.Expressions.INode, MetaFac.CG5.Expressions.IOperatorNode, System.IEquatable<MetaFac.CG5.Expressions.JsonSystemText.OperatorNode>
+    {
+        public const int EntityTag = 11;
+        public OperatorNode() { }
+        public OperatorNode(MetaFac.CG5.Expressions.IOperatorNode? source) { }
+        public OperatorNode(MetaFac.CG5.Expressions.JsonSystemText.OperatorNode? source) { }
+        public void CopyFrom(MetaFac.CG5.Expressions.IOperatorNode? source) { }
+        public bool Equals(MetaFac.CG5.Expressions.JsonSystemText.OperatorNode? other) { }
+        public override bool Equals(object? obj) { }
+        public override int GetHashCode() { }
+        protected override int OnGetEntityTag() { }
+    }
+    public sealed class OperatorNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.IOperatorNode, MetaFac.CG5.Expressions.JsonSystemText.OperatorNode>
+    {
+        public OperatorNode_Factory() { }
+        public MetaFac.CG5.Expressions.JsonSystemText.OperatorNode Empty { get; }
+        public static MetaFac.CG5.Expressions.JsonSystemText.OperatorNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.JsonSystemText.OperatorNode? CreateFrom(MetaFac.CG5.Expressions.IOperatorNode? source) { }
+    }
+    public class StringConstantNode : MetaFac.CG5.Expressions.JsonSystemText.ConstantNode, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IConstantNode, MetaFac.CG5.Expressions.INode, MetaFac.CG5.Expressions.IStringConstantNode, System.IEquatable<MetaFac.CG5.Expressions.JsonSystemText.StringConstantNode>
+    {
+        public const int EntityTag = 6;
+        public StringConstantNode() { }
+        public StringConstantNode(MetaFac.CG5.Expressions.IStringConstantNode? source) { }
+        public StringConstantNode(MetaFac.CG5.Expressions.JsonSystemText.StringConstantNode? source) { }
+        public string? Value { get; set; }
+        public void CopyFrom(MetaFac.CG5.Expressions.IStringConstantNode? source) { }
+        public bool Equals(MetaFac.CG5.Expressions.JsonSystemText.StringConstantNode? other) { }
+        public override bool Equals(object? obj) { }
+        public override int GetHashCode() { }
+        protected override int OnGetEntityTag() { }
+    }
+    public sealed class StringConstantNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.IStringConstantNode, MetaFac.CG5.Expressions.JsonSystemText.StringConstantNode>
+    {
+        public StringConstantNode_Factory() { }
+        public MetaFac.CG5.Expressions.JsonSystemText.StringConstantNode Empty { get; }
+        public static MetaFac.CG5.Expressions.JsonSystemText.StringConstantNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.JsonSystemText.StringConstantNode? CreateFrom(MetaFac.CG5.Expressions.IStringConstantNode? source) { }
+    }
+    public class TertiaryExpressionNode : MetaFac.CG5.Expressions.JsonSystemText.Node, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.INode, MetaFac.CG5.Expressions.ITertiaryExpressionNode, System.IEquatable<MetaFac.CG5.Expressions.JsonSystemText.TertiaryExpressionNode>
+    {
+        public const int EntityTag = 15;
+        public TertiaryExpressionNode() { }
+        public TertiaryExpressionNode(MetaFac.CG5.Expressions.ITertiaryExpressionNode? source) { }
+        public TertiaryExpressionNode(MetaFac.CG5.Expressions.JsonSystemText.TertiaryExpressionNode? source) { }
+        public MetaFac.CG5.Expressions.JsonSystemText.Node? Node1 { get; set; }
+        public MetaFac.CG5.Expressions.JsonSystemText.Node? Node2 { get; set; }
+        public MetaFac.CG5.Expressions.JsonSystemText.Node? Node3 { get; set; }
+        public MetaFac.CG5.Expressions.TertiaryOperator Op { get; set; }
+        public void CopyFrom(MetaFac.CG5.Expressions.ITertiaryExpressionNode? source) { }
+        public bool Equals(MetaFac.CG5.Expressions.JsonSystemText.TertiaryExpressionNode? other) { }
+        public override bool Equals(object? obj) { }
+        public override int GetHashCode() { }
+        protected override int OnGetEntityTag() { }
+    }
+    public sealed class TertiaryExpressionNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.ITertiaryExpressionNode, MetaFac.CG5.Expressions.JsonSystemText.TertiaryExpressionNode>
+    {
+        public TertiaryExpressionNode_Factory() { }
+        public MetaFac.CG5.Expressions.JsonSystemText.TertiaryExpressionNode Empty { get; }
+        public static MetaFac.CG5.Expressions.JsonSystemText.TertiaryExpressionNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.JsonSystemText.TertiaryExpressionNode? CreateFrom(MetaFac.CG5.Expressions.ITertiaryExpressionNode? source) { }
+    }
+    public class UnaryExpressionNode : MetaFac.CG5.Expressions.JsonSystemText.Node, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.INode, MetaFac.CG5.Expressions.IUnaryExpressionNode, System.IEquatable<MetaFac.CG5.Expressions.JsonSystemText.UnaryExpressionNode>
+    {
+        public const int EntityTag = 13;
+        public UnaryExpressionNode() { }
+        public UnaryExpressionNode(MetaFac.CG5.Expressions.IUnaryExpressionNode? source) { }
+        public UnaryExpressionNode(MetaFac.CG5.Expressions.JsonSystemText.UnaryExpressionNode? source) { }
+        public MetaFac.CG5.Expressions.UnaryOperator Op { get; set; }
+        public MetaFac.CG5.Expressions.JsonSystemText.Node? Operand { get; set; }
+        public void CopyFrom(MetaFac.CG5.Expressions.IUnaryExpressionNode? source) { }
+        public bool Equals(MetaFac.CG5.Expressions.JsonSystemText.UnaryExpressionNode? other) { }
+        public override bool Equals(object? obj) { }
+        public override int GetHashCode() { }
+        protected override int OnGetEntityTag() { }
+    }
+    public sealed class UnaryExpressionNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.IUnaryExpressionNode, MetaFac.CG5.Expressions.JsonSystemText.UnaryExpressionNode>
+    {
+        public UnaryExpressionNode_Factory() { }
+        public MetaFac.CG5.Expressions.JsonSystemText.UnaryExpressionNode Empty { get; }
+        public static MetaFac.CG5.Expressions.JsonSystemText.UnaryExpressionNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.JsonSystemText.UnaryExpressionNode? CreateFrom(MetaFac.CG5.Expressions.IUnaryExpressionNode? source) { }
+    }
+    public class VariableNode : MetaFac.CG5.Expressions.JsonSystemText.Node, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.INode, MetaFac.CG5.Expressions.IVariableNode, System.IEquatable<MetaFac.CG5.Expressions.JsonSystemText.VariableNode>
+    {
+        public const int EntityTag = 10;
+        public VariableNode() { }
+        public VariableNode(MetaFac.CG5.Expressions.IVariableNode? source) { }
+        public VariableNode(MetaFac.CG5.Expressions.JsonSystemText.VariableNode? source) { }
+        public string? Name { get; set; }
+        public void CopyFrom(MetaFac.CG5.Expressions.IVariableNode? source) { }
+        public bool Equals(MetaFac.CG5.Expressions.JsonSystemText.VariableNode? other) { }
+        public override bool Equals(object? obj) { }
+        public override int GetHashCode() { }
+        protected override int OnGetEntityTag() { }
+    }
+    public sealed class VariableNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.IVariableNode, MetaFac.CG5.Expressions.JsonSystemText.VariableNode>
+    {
+        public VariableNode_Factory() { }
+        public MetaFac.CG5.Expressions.JsonSystemText.VariableNode Empty { get; }
+        public static MetaFac.CG5.Expressions.JsonSystemText.VariableNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.JsonSystemText.VariableNode? CreateFrom(MetaFac.CG5.Expressions.IVariableNode? source) { }
+    }
+}
+namespace MetaFac.CG5.Expressions.MessagePack
+{
+    [MessagePack.MessagePackObject(false)]
+    public class BinaryExpressionNode : MetaFac.CG5.Expressions.MessagePack.Node, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IBinaryExpressionNode, MetaFac.CG5.Expressions.INode, MetaFac.Mutability.ICopyFrom<MetaFac.CG5.Expressions.MessagePack.BinaryExpressionNode>, System.IEquatable<MetaFac.CG5.Expressions.MessagePack.BinaryExpressionNode>
+    {
+        public const int EntityTag = 14;
+        public BinaryExpressionNode() { }
+        public BinaryExpressionNode(MetaFac.CG5.Expressions.IBinaryExpressionNode source) { }
+        public BinaryExpressionNode(MetaFac.CG5.Expressions.MessagePack.BinaryExpressionNode source) { }
+        [MessagePack.Key(2)]
+        public MetaFac.CG5.Expressions.MessagePack.Node? Left { get; set; }
+        [MessagePack.Key(1)]
+        public MetaFac.CG5.Expressions.BinaryOperator Op { get; set; }
+        [MessagePack.Key(3)]
+        public MetaFac.CG5.Expressions.MessagePack.Node? Right { get; set; }
+        public void CopyFrom(MetaFac.CG5.Expressions.MessagePack.BinaryExpressionNode source) { }
+        public bool Equals(MetaFac.CG5.Expressions.MessagePack.BinaryExpressionNode? other) { }
+        public override bool Equals(object? obj) { }
+        public override int GetHashCode() { }
+        protected override void OnFreeze() { }
+        protected override int OnGetEntityTag() { }
+        public static bool operator !=(MetaFac.CG5.Expressions.MessagePack.BinaryExpressionNode left, MetaFac.CG5.Expressions.MessagePack.BinaryExpressionNode right) { }
+        public static bool operator ==(MetaFac.CG5.Expressions.MessagePack.BinaryExpressionNode left, MetaFac.CG5.Expressions.MessagePack.BinaryExpressionNode right) { }
+    }
+    public sealed class BinaryExpressionNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.IBinaryExpressionNode, MetaFac.CG5.Expressions.MessagePack.BinaryExpressionNode>
+    {
+        public BinaryExpressionNode_Factory() { }
+        public MetaFac.CG5.Expressions.MessagePack.BinaryExpressionNode Empty { get; }
+        public static MetaFac.CG5.Expressions.MessagePack.BinaryExpressionNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.MessagePack.BinaryExpressionNode? CreateFrom(MetaFac.CG5.Expressions.IBinaryExpressionNode? source) { }
+    }
+    [MessagePack.MessagePackObject(false)]
+    public class BinaryOperatorNode : MetaFac.CG5.Expressions.MessagePack.OperatorNode, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IBinaryOperatorNode, MetaFac.CG5.Expressions.IConstantNode, MetaFac.CG5.Expressions.INode, MetaFac.CG5.Expressions.IOperatorNode, MetaFac.Mutability.ICopyFrom<MetaFac.CG5.Expressions.MessagePack.BinaryOperatorNode>, System.IEquatable<MetaFac.CG5.Expressions.MessagePack.BinaryOperatorNode>
+    {
+        public const int EntityTag = 12;
+        public BinaryOperatorNode() { }
+        public BinaryOperatorNode(MetaFac.CG5.Expressions.IBinaryOperatorNode source) { }
+        public BinaryOperatorNode(MetaFac.CG5.Expressions.MessagePack.BinaryOperatorNode source) { }
+        [MessagePack.Key(1)]
+        public MetaFac.CG5.Expressions.BinaryOperator Value { get; set; }
+        public void CopyFrom(MetaFac.CG5.Expressions.MessagePack.BinaryOperatorNode source) { }
+        public bool Equals(MetaFac.CG5.Expressions.MessagePack.BinaryOperatorNode? other) { }
+        public override bool Equals(object? obj) { }
+        public override int GetHashCode() { }
+        protected override void OnFreeze() { }
+        protected override int OnGetEntityTag() { }
+        public static bool operator !=(MetaFac.CG5.Expressions.MessagePack.BinaryOperatorNode left, MetaFac.CG5.Expressions.MessagePack.BinaryOperatorNode right) { }
+        public static bool operator ==(MetaFac.CG5.Expressions.MessagePack.BinaryOperatorNode left, MetaFac.CG5.Expressions.MessagePack.BinaryOperatorNode right) { }
+    }
+    public sealed class BinaryOperatorNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.IBinaryOperatorNode, MetaFac.CG5.Expressions.MessagePack.BinaryOperatorNode>
+    {
+        public BinaryOperatorNode_Factory() { }
+        public MetaFac.CG5.Expressions.MessagePack.BinaryOperatorNode Empty { get; }
+        public static MetaFac.CG5.Expressions.MessagePack.BinaryOperatorNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.MessagePack.BinaryOperatorNode? CreateFrom(MetaFac.CG5.Expressions.IBinaryOperatorNode? source) { }
+    }
+    [MessagePack.MessagePackObject(false)]
+    public class BooleanConstantNode : MetaFac.CG5.Expressions.MessagePack.ConstantNode, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IBooleanConstantNode, MetaFac.CG5.Expressions.IConstantNode, MetaFac.CG5.Expressions.INode, MetaFac.Mutability.ICopyFrom<MetaFac.CG5.Expressions.MessagePack.BooleanConstantNode>, System.IEquatable<MetaFac.CG5.Expressions.MessagePack.BooleanConstantNode>
+    {
+        public const int EntityTag = 5;
+        public BooleanConstantNode() { }
+        public BooleanConstantNode(MetaFac.CG5.Expressions.IBooleanConstantNode source) { }
+        public BooleanConstantNode(MetaFac.CG5.Expressions.MessagePack.BooleanConstantNode source) { }
+        [MessagePack.Key(1)]
+        public bool Value { get; set; }
+        public void CopyFrom(MetaFac.CG5.Expressions.MessagePack.BooleanConstantNode source) { }
+        public bool Equals(MetaFac.CG5.Expressions.MessagePack.BooleanConstantNode? other) { }
+        public override bool Equals(object? obj) { }
+        public override int GetHashCode() { }
+        protected override void OnFreeze() { }
+        protected override int OnGetEntityTag() { }
+        public static bool operator !=(MetaFac.CG5.Expressions.MessagePack.BooleanConstantNode left, MetaFac.CG5.Expressions.MessagePack.BooleanConstantNode right) { }
+        public static bool operator ==(MetaFac.CG5.Expressions.MessagePack.BooleanConstantNode left, MetaFac.CG5.Expressions.MessagePack.BooleanConstantNode right) { }
+    }
+    public sealed class BooleanConstantNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.IBooleanConstantNode, MetaFac.CG5.Expressions.MessagePack.BooleanConstantNode>
+    {
+        public BooleanConstantNode_Factory() { }
+        public MetaFac.CG5.Expressions.MessagePack.BooleanConstantNode Empty { get; }
+        public static MetaFac.CG5.Expressions.MessagePack.BooleanConstantNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.MessagePack.BooleanConstantNode? CreateFrom(MetaFac.CG5.Expressions.IBooleanConstantNode? source) { }
+    }
+    [MessagePack.MessagePackObject(false)]
+    [MessagePack.Union(11, typeof(MetaFac.CG5.Expressions.MessagePack.OperatorNode))]
+    [MessagePack.Union(12, typeof(MetaFac.CG5.Expressions.MessagePack.BinaryOperatorNode))]
+    [MessagePack.Union(4, typeof(MetaFac.CG5.Expressions.MessagePack.NullConstantNode))]
+    [MessagePack.Union(5, typeof(MetaFac.CG5.Expressions.MessagePack.BooleanConstantNode))]
+    [MessagePack.Union(6, typeof(MetaFac.CG5.Expressions.MessagePack.StringConstantNode))]
+    [MessagePack.Union(7, typeof(MetaFac.CG5.Expressions.MessagePack.NumericConstantNode))]
+    [MessagePack.Union(8, typeof(MetaFac.CG5.Expressions.MessagePack.IntegerConstantNode))]
+    [MessagePack.Union(9, typeof(MetaFac.CG5.Expressions.MessagePack.DoubleConstantNode))]
+    public abstract class ConstantNode : MetaFac.CG5.Expressions.MessagePack.Node, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IConstantNode, MetaFac.CG5.Expressions.INode, MetaFac.Mutability.ICopyFrom<MetaFac.CG5.Expressions.MessagePack.ConstantNode>, System.IEquatable<MetaFac.CG5.Expressions.MessagePack.ConstantNode>
+    {
+        public const int EntityTag = 3;
+        public ConstantNode() { }
+        public ConstantNode(MetaFac.CG5.Expressions.IConstantNode source) { }
+        public ConstantNode(MetaFac.CG5.Expressions.MessagePack.ConstantNode source) { }
+        public void CopyFrom(MetaFac.CG5.Expressions.MessagePack.ConstantNode source) { }
+        public bool Equals(MetaFac.CG5.Expressions.MessagePack.ConstantNode? other) { }
+        public override bool Equals(object? obj) { }
+        public override int GetHashCode() { }
+        protected override void OnFreeze() { }
+        protected override int OnGetEntityTag() { }
+        public static bool operator !=(MetaFac.CG5.Expressions.MessagePack.ConstantNode left, MetaFac.CG5.Expressions.MessagePack.ConstantNode right) { }
+        public static bool operator ==(MetaFac.CG5.Expressions.MessagePack.ConstantNode left, MetaFac.CG5.Expressions.MessagePack.ConstantNode right) { }
+    }
+    public sealed class ConstantNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.IConstantNode, MetaFac.CG5.Expressions.MessagePack.ConstantNode>
+    {
+        public ConstantNode_Factory() { }
+        public MetaFac.CG5.Expressions.MessagePack.ConstantNode Empty { get; }
+        public static MetaFac.CG5.Expressions.MessagePack.ConstantNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.MessagePack.ConstantNode? CreateFrom(MetaFac.CG5.Expressions.IConstantNode? source) { }
+    }
+    [MessagePack.MessagePackObject(false)]
+    public class DoubleConstantNode : MetaFac.CG5.Expressions.MessagePack.NumericConstantNode, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IConstantNode, MetaFac.CG5.Expressions.IDoubleConstantNode, MetaFac.CG5.Expressions.INode, MetaFac.CG5.Expressions.INumericConstantNode, MetaFac.Mutability.ICopyFrom<MetaFac.CG5.Expressions.MessagePack.DoubleConstantNode>, System.IEquatable<MetaFac.CG5.Expressions.MessagePack.DoubleConstantNode>
+    {
+        public const int EntityTag = 9;
+        public DoubleConstantNode() { }
+        public DoubleConstantNode(MetaFac.CG5.Expressions.IDoubleConstantNode source) { }
+        public DoubleConstantNode(MetaFac.CG5.Expressions.MessagePack.DoubleConstantNode source) { }
+        [MessagePack.Key(1)]
+        public double Value { get; set; }
+        public void CopyFrom(MetaFac.CG5.Expressions.MessagePack.DoubleConstantNode source) { }
+        public bool Equals(MetaFac.CG5.Expressions.MessagePack.DoubleConstantNode? other) { }
+        public override bool Equals(object? obj) { }
+        public override int GetHashCode() { }
+        protected override void OnFreeze() { }
+        protected override int OnGetEntityTag() { }
+        public static bool operator !=(MetaFac.CG5.Expressions.MessagePack.DoubleConstantNode left, MetaFac.CG5.Expressions.MessagePack.DoubleConstantNode right) { }
+        public static bool operator ==(MetaFac.CG5.Expressions.MessagePack.DoubleConstantNode left, MetaFac.CG5.Expressions.MessagePack.DoubleConstantNode right) { }
+    }
+    public sealed class DoubleConstantNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.IDoubleConstantNode, MetaFac.CG5.Expressions.MessagePack.DoubleConstantNode>
+    {
+        public DoubleConstantNode_Factory() { }
+        public MetaFac.CG5.Expressions.MessagePack.DoubleConstantNode Empty { get; }
+        public static MetaFac.CG5.Expressions.MessagePack.DoubleConstantNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.MessagePack.DoubleConstantNode? CreateFrom(MetaFac.CG5.Expressions.IDoubleConstantNode? source) { }
+    }
+    public abstract class EntityBase : MetaFac.CG4.Runtime.IEntityBase, MetaFac.Mutability.ICopyFrom<MetaFac.CG5.Expressions.MessagePack.EntityBase>, MetaFac.Mutability.IFreezable, System.IEquatable<MetaFac.CG5.Expressions.MessagePack.EntityBase>
+    {
+        public const int EntityTag = 0;
+        protected volatile bool _isFrozen;
+        public EntityBase() { }
+        public EntityBase(MetaFac.CG4.Runtime.IEntityBase source) { }
+        public EntityBase(MetaFac.CG5.Expressions.MessagePack.EntityBase source) { }
+        public static MetaFac.CG5.Expressions.MessagePack.EntityBase Empty { get; }
+        protected void CheckNotFrozen() { }
+        protected T& CheckNotFrozen<T>(ref T value) { }
+        public void CopyFrom(MetaFac.CG5.Expressions.MessagePack.EntityBase source) { }
+        public bool Equals(MetaFac.CG5.Expressions.MessagePack.EntityBase? other) { }
+        public override bool Equals(object? obj) { }
+        public void Freeze() { }
+        public int GetEntityTag() { }
+        public override int GetHashCode() { }
+        public bool IsFreezable() { }
+        public bool IsFrozen() { }
+        protected virtual void OnFreeze() { }
+        protected abstract int OnGetEntityTag();
+        public bool TryFreeze() { }
+    }
+    [MessagePack.MessagePackObject(false)]
+    public class ErrorNode : MetaFac.CG5.Expressions.MessagePack.Node, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IErrorNode, MetaFac.CG5.Expressions.INode, MetaFac.Mutability.ICopyFrom<MetaFac.CG5.Expressions.MessagePack.ErrorNode>, System.IEquatable<MetaFac.CG5.Expressions.MessagePack.ErrorNode>
+    {
+        public const int EntityTag = 2;
+        public ErrorNode() { }
+        public ErrorNode(MetaFac.CG5.Expressions.IErrorNode source) { }
+        public ErrorNode(MetaFac.CG5.Expressions.MessagePack.ErrorNode source) { }
+        [MessagePack.Key(1)]
+        public string? Message { get; set; }
+        public void CopyFrom(MetaFac.CG5.Expressions.MessagePack.ErrorNode source) { }
+        public bool Equals(MetaFac.CG5.Expressions.MessagePack.ErrorNode? other) { }
+        public override bool Equals(object? obj) { }
+        public override int GetHashCode() { }
+        protected override void OnFreeze() { }
+        protected override int OnGetEntityTag() { }
+        public static bool operator !=(MetaFac.CG5.Expressions.MessagePack.ErrorNode left, MetaFac.CG5.Expressions.MessagePack.ErrorNode right) { }
+        public static bool operator ==(MetaFac.CG5.Expressions.MessagePack.ErrorNode left, MetaFac.CG5.Expressions.MessagePack.ErrorNode right) { }
+    }
+    public sealed class ErrorNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.IErrorNode, MetaFac.CG5.Expressions.MessagePack.ErrorNode>
+    {
+        public ErrorNode_Factory() { }
+        public MetaFac.CG5.Expressions.MessagePack.ErrorNode Empty { get; }
+        public static MetaFac.CG5.Expressions.MessagePack.ErrorNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.MessagePack.ErrorNode? CreateFrom(MetaFac.CG5.Expressions.IErrorNode? source) { }
+    }
+    [MessagePack.MessagePackObject(false)]
+    public class IntegerConstantNode : MetaFac.CG5.Expressions.MessagePack.NumericConstantNode, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IConstantNode, MetaFac.CG5.Expressions.IIntegerConstantNode, MetaFac.CG5.Expressions.INode, MetaFac.CG5.Expressions.INumericConstantNode, MetaFac.Mutability.ICopyFrom<MetaFac.CG5.Expressions.MessagePack.IntegerConstantNode>, System.IEquatable<MetaFac.CG5.Expressions.MessagePack.IntegerConstantNode>
+    {
+        public const int EntityTag = 8;
+        public IntegerConstantNode() { }
+        public IntegerConstantNode(MetaFac.CG5.Expressions.IIntegerConstantNode source) { }
+        public IntegerConstantNode(MetaFac.CG5.Expressions.MessagePack.IntegerConstantNode source) { }
+        [MessagePack.Key(1)]
+        public long Value { get; set; }
+        public void CopyFrom(MetaFac.CG5.Expressions.MessagePack.IntegerConstantNode source) { }
+        public bool Equals(MetaFac.CG5.Expressions.MessagePack.IntegerConstantNode? other) { }
+        public override bool Equals(object? obj) { }
+        public override int GetHashCode() { }
+        protected override void OnFreeze() { }
+        protected override int OnGetEntityTag() { }
+        public static bool operator !=(MetaFac.CG5.Expressions.MessagePack.IntegerConstantNode left, MetaFac.CG5.Expressions.MessagePack.IntegerConstantNode right) { }
+        public static bool operator ==(MetaFac.CG5.Expressions.MessagePack.IntegerConstantNode left, MetaFac.CG5.Expressions.MessagePack.IntegerConstantNode right) { }
+    }
+    public sealed class IntegerConstantNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.IIntegerConstantNode, MetaFac.CG5.Expressions.MessagePack.IntegerConstantNode>
+    {
+        public IntegerConstantNode_Factory() { }
+        public MetaFac.CG5.Expressions.MessagePack.IntegerConstantNode Empty { get; }
+        public static MetaFac.CG5.Expressions.MessagePack.IntegerConstantNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.MessagePack.IntegerConstantNode? CreateFrom(MetaFac.CG5.Expressions.IIntegerConstantNode? source) { }
+    }
+    [MessagePack.MessagePackObject(false)]
+    [MessagePack.Union(10, typeof(MetaFac.CG5.Expressions.MessagePack.VariableNode))]
+    [MessagePack.Union(11, typeof(MetaFac.CG5.Expressions.MessagePack.OperatorNode))]
+    [MessagePack.Union(12, typeof(MetaFac.CG5.Expressions.MessagePack.BinaryOperatorNode))]
+    [MessagePack.Union(13, typeof(MetaFac.CG5.Expressions.MessagePack.UnaryExpressionNode))]
+    [MessagePack.Union(14, typeof(MetaFac.CG5.Expressions.MessagePack.BinaryExpressionNode))]
+    [MessagePack.Union(15, typeof(MetaFac.CG5.Expressions.MessagePack.TertiaryExpressionNode))]
+    [MessagePack.Union(2, typeof(MetaFac.CG5.Expressions.MessagePack.ErrorNode))]
+    [MessagePack.Union(3, typeof(MetaFac.CG5.Expressions.MessagePack.ConstantNode))]
+    [MessagePack.Union(4, typeof(MetaFac.CG5.Expressions.MessagePack.NullConstantNode))]
+    [MessagePack.Union(5, typeof(MetaFac.CG5.Expressions.MessagePack.BooleanConstantNode))]
+    [MessagePack.Union(6, typeof(MetaFac.CG5.Expressions.MessagePack.StringConstantNode))]
+    [MessagePack.Union(7, typeof(MetaFac.CG5.Expressions.MessagePack.NumericConstantNode))]
+    [MessagePack.Union(8, typeof(MetaFac.CG5.Expressions.MessagePack.IntegerConstantNode))]
+    [MessagePack.Union(9, typeof(MetaFac.CG5.Expressions.MessagePack.DoubleConstantNode))]
+    public abstract class Node : MetaFac.CG5.Expressions.MessagePack.EntityBase, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.INode, MetaFac.Mutability.ICopyFrom<MetaFac.CG5.Expressions.MessagePack.Node>, System.IEquatable<MetaFac.CG5.Expressions.MessagePack.Node>
+    {
+        public const int EntityTag = 1;
+        public Node() { }
+        public Node(MetaFac.CG5.Expressions.INode source) { }
+        public Node(MetaFac.CG5.Expressions.MessagePack.Node source) { }
+        public void CopyFrom(MetaFac.CG5.Expressions.MessagePack.Node source) { }
+        public bool Equals(MetaFac.CG5.Expressions.MessagePack.Node? other) { }
+        public override bool Equals(object? obj) { }
+        public override int GetHashCode() { }
+        protected override void OnFreeze() { }
+        protected override int OnGetEntityTag() { }
+        public static bool operator !=(MetaFac.CG5.Expressions.MessagePack.Node left, MetaFac.CG5.Expressions.MessagePack.Node right) { }
+        public static bool operator ==(MetaFac.CG5.Expressions.MessagePack.Node left, MetaFac.CG5.Expressions.MessagePack.Node right) { }
+    }
+    public sealed class Node_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.INode, MetaFac.CG5.Expressions.MessagePack.Node>
+    {
+        public Node_Factory() { }
+        public MetaFac.CG5.Expressions.MessagePack.Node Empty { get; }
+        public static MetaFac.CG5.Expressions.MessagePack.Node_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.MessagePack.Node? CreateFrom(MetaFac.CG5.Expressions.INode? source) { }
+    }
+    [MessagePack.MessagePackObject(false)]
+    public class NullConstantNode : MetaFac.CG5.Expressions.MessagePack.ConstantNode, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IConstantNode, MetaFac.CG5.Expressions.INode, MetaFac.CG5.Expressions.INullConstantNode, MetaFac.Mutability.ICopyFrom<MetaFac.CG5.Expressions.MessagePack.NullConstantNode>, System.IEquatable<MetaFac.CG5.Expressions.MessagePack.NullConstantNode>
+    {
+        public const int EntityTag = 4;
+        public NullConstantNode() { }
+        public NullConstantNode(MetaFac.CG5.Expressions.INullConstantNode source) { }
+        public NullConstantNode(MetaFac.CG5.Expressions.MessagePack.NullConstantNode source) { }
+        public void CopyFrom(MetaFac.CG5.Expressions.MessagePack.NullConstantNode source) { }
+        public bool Equals(MetaFac.CG5.Expressions.MessagePack.NullConstantNode? other) { }
+        public override bool Equals(object? obj) { }
+        public override int GetHashCode() { }
+        protected override void OnFreeze() { }
+        protected override int OnGetEntityTag() { }
+        public static bool operator !=(MetaFac.CG5.Expressions.MessagePack.NullConstantNode left, MetaFac.CG5.Expressions.MessagePack.NullConstantNode right) { }
+        public static bool operator ==(MetaFac.CG5.Expressions.MessagePack.NullConstantNode left, MetaFac.CG5.Expressions.MessagePack.NullConstantNode right) { }
+    }
+    public sealed class NullConstantNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.INullConstantNode, MetaFac.CG5.Expressions.MessagePack.NullConstantNode>
+    {
+        public NullConstantNode_Factory() { }
+        public MetaFac.CG5.Expressions.MessagePack.NullConstantNode Empty { get; }
+        public static MetaFac.CG5.Expressions.MessagePack.NullConstantNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.MessagePack.NullConstantNode? CreateFrom(MetaFac.CG5.Expressions.INullConstantNode? source) { }
+    }
+    [MessagePack.MessagePackObject(false)]
+    [MessagePack.Union(8, typeof(MetaFac.CG5.Expressions.MessagePack.IntegerConstantNode))]
+    [MessagePack.Union(9, typeof(MetaFac.CG5.Expressions.MessagePack.DoubleConstantNode))]
+    public abstract class NumericConstantNode : MetaFac.CG5.Expressions.MessagePack.ConstantNode, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IConstantNode, MetaFac.CG5.Expressions.INode, MetaFac.CG5.Expressions.INumericConstantNode, MetaFac.Mutability.ICopyFrom<MetaFac.CG5.Expressions.MessagePack.NumericConstantNode>, System.IEquatable<MetaFac.CG5.Expressions.MessagePack.NumericConstantNode>
+    {
+        public const int EntityTag = 7;
+        public NumericConstantNode() { }
+        public NumericConstantNode(MetaFac.CG5.Expressions.INumericConstantNode source) { }
+        public NumericConstantNode(MetaFac.CG5.Expressions.MessagePack.NumericConstantNode source) { }
+        public void CopyFrom(MetaFac.CG5.Expressions.MessagePack.NumericConstantNode source) { }
+        public bool Equals(MetaFac.CG5.Expressions.MessagePack.NumericConstantNode? other) { }
+        public override bool Equals(object? obj) { }
+        public override int GetHashCode() { }
+        protected override void OnFreeze() { }
+        protected override int OnGetEntityTag() { }
+        public static bool operator !=(MetaFac.CG5.Expressions.MessagePack.NumericConstantNode left, MetaFac.CG5.Expressions.MessagePack.NumericConstantNode right) { }
+        public static bool operator ==(MetaFac.CG5.Expressions.MessagePack.NumericConstantNode left, MetaFac.CG5.Expressions.MessagePack.NumericConstantNode right) { }
+    }
+    public sealed class NumericConstantNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.INumericConstantNode, MetaFac.CG5.Expressions.MessagePack.NumericConstantNode>
+    {
+        public NumericConstantNode_Factory() { }
+        public MetaFac.CG5.Expressions.MessagePack.NumericConstantNode Empty { get; }
+        public static MetaFac.CG5.Expressions.MessagePack.NumericConstantNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.MessagePack.NumericConstantNode? CreateFrom(MetaFac.CG5.Expressions.INumericConstantNode? source) { }
+    }
+    [MessagePack.MessagePackObject(false)]
+    [MessagePack.Union(12, typeof(MetaFac.CG5.Expressions.MessagePack.BinaryOperatorNode))]
+    public abstract class OperatorNode : MetaFac.CG5.Expressions.MessagePack.ConstantNode, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IConstantNode, MetaFac.CG5.Expressions.INode, MetaFac.CG5.Expressions.IOperatorNode, MetaFac.Mutability.ICopyFrom<MetaFac.CG5.Expressions.MessagePack.OperatorNode>, System.IEquatable<MetaFac.CG5.Expressions.MessagePack.OperatorNode>
+    {
+        public const int EntityTag = 11;
+        public OperatorNode() { }
+        public OperatorNode(MetaFac.CG5.Expressions.IOperatorNode source) { }
+        public OperatorNode(MetaFac.CG5.Expressions.MessagePack.OperatorNode source) { }
+        public void CopyFrom(MetaFac.CG5.Expressions.MessagePack.OperatorNode source) { }
+        public bool Equals(MetaFac.CG5.Expressions.MessagePack.OperatorNode? other) { }
+        public override bool Equals(object? obj) { }
+        public override int GetHashCode() { }
+        protected override void OnFreeze() { }
+        protected override int OnGetEntityTag() { }
+        public static bool operator !=(MetaFac.CG5.Expressions.MessagePack.OperatorNode left, MetaFac.CG5.Expressions.MessagePack.OperatorNode right) { }
+        public static bool operator ==(MetaFac.CG5.Expressions.MessagePack.OperatorNode left, MetaFac.CG5.Expressions.MessagePack.OperatorNode right) { }
+    }
+    public sealed class OperatorNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.IOperatorNode, MetaFac.CG5.Expressions.MessagePack.OperatorNode>
+    {
+        public OperatorNode_Factory() { }
+        public MetaFac.CG5.Expressions.MessagePack.OperatorNode Empty { get; }
+        public static MetaFac.CG5.Expressions.MessagePack.OperatorNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.MessagePack.OperatorNode? CreateFrom(MetaFac.CG5.Expressions.IOperatorNode? source) { }
+    }
+    [MessagePack.MessagePackObject(false)]
+    public class StringConstantNode : MetaFac.CG5.Expressions.MessagePack.ConstantNode, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.IConstantNode, MetaFac.CG5.Expressions.INode, MetaFac.CG5.Expressions.IStringConstantNode, MetaFac.Mutability.ICopyFrom<MetaFac.CG5.Expressions.MessagePack.StringConstantNode>, System.IEquatable<MetaFac.CG5.Expressions.MessagePack.StringConstantNode>
+    {
+        public const int EntityTag = 6;
+        public StringConstantNode() { }
+        public StringConstantNode(MetaFac.CG5.Expressions.IStringConstantNode source) { }
+        public StringConstantNode(MetaFac.CG5.Expressions.MessagePack.StringConstantNode source) { }
+        [MessagePack.Key(1)]
+        public string? Value { get; set; }
+        public void CopyFrom(MetaFac.CG5.Expressions.MessagePack.StringConstantNode source) { }
+        public bool Equals(MetaFac.CG5.Expressions.MessagePack.StringConstantNode? other) { }
+        public override bool Equals(object? obj) { }
+        public override int GetHashCode() { }
+        protected override void OnFreeze() { }
+        protected override int OnGetEntityTag() { }
+        public static bool operator !=(MetaFac.CG5.Expressions.MessagePack.StringConstantNode left, MetaFac.CG5.Expressions.MessagePack.StringConstantNode right) { }
+        public static bool operator ==(MetaFac.CG5.Expressions.MessagePack.StringConstantNode left, MetaFac.CG5.Expressions.MessagePack.StringConstantNode right) { }
+    }
+    public sealed class StringConstantNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.IStringConstantNode, MetaFac.CG5.Expressions.MessagePack.StringConstantNode>
+    {
+        public StringConstantNode_Factory() { }
+        public MetaFac.CG5.Expressions.MessagePack.StringConstantNode Empty { get; }
+        public static MetaFac.CG5.Expressions.MessagePack.StringConstantNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.MessagePack.StringConstantNode? CreateFrom(MetaFac.CG5.Expressions.IStringConstantNode? source) { }
+    }
+    [MessagePack.MessagePackObject(false)]
+    public class TertiaryExpressionNode : MetaFac.CG5.Expressions.MessagePack.Node, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.INode, MetaFac.CG5.Expressions.ITertiaryExpressionNode, MetaFac.Mutability.ICopyFrom<MetaFac.CG5.Expressions.MessagePack.TertiaryExpressionNode>, System.IEquatable<MetaFac.CG5.Expressions.MessagePack.TertiaryExpressionNode>
+    {
+        public const int EntityTag = 15;
+        public TertiaryExpressionNode() { }
+        public TertiaryExpressionNode(MetaFac.CG5.Expressions.ITertiaryExpressionNode source) { }
+        public TertiaryExpressionNode(MetaFac.CG5.Expressions.MessagePack.TertiaryExpressionNode source) { }
+        [MessagePack.Key(2)]
+        public MetaFac.CG5.Expressions.MessagePack.Node? Node1 { get; set; }
+        [MessagePack.Key(3)]
+        public MetaFac.CG5.Expressions.MessagePack.Node? Node2 { get; set; }
+        [MessagePack.Key(4)]
+        public MetaFac.CG5.Expressions.MessagePack.Node? Node3 { get; set; }
+        [MessagePack.Key(1)]
+        public MetaFac.CG5.Expressions.TertiaryOperator Op { get; set; }
+        public void CopyFrom(MetaFac.CG5.Expressions.MessagePack.TertiaryExpressionNode source) { }
+        public bool Equals(MetaFac.CG5.Expressions.MessagePack.TertiaryExpressionNode? other) { }
+        public override bool Equals(object? obj) { }
+        public override int GetHashCode() { }
+        protected override void OnFreeze() { }
+        protected override int OnGetEntityTag() { }
+        public static bool operator !=(MetaFac.CG5.Expressions.MessagePack.TertiaryExpressionNode left, MetaFac.CG5.Expressions.MessagePack.TertiaryExpressionNode right) { }
+        public static bool operator ==(MetaFac.CG5.Expressions.MessagePack.TertiaryExpressionNode left, MetaFac.CG5.Expressions.MessagePack.TertiaryExpressionNode right) { }
+    }
+    public sealed class TertiaryExpressionNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.ITertiaryExpressionNode, MetaFac.CG5.Expressions.MessagePack.TertiaryExpressionNode>
+    {
+        public TertiaryExpressionNode_Factory() { }
+        public MetaFac.CG5.Expressions.MessagePack.TertiaryExpressionNode Empty { get; }
+        public static MetaFac.CG5.Expressions.MessagePack.TertiaryExpressionNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.MessagePack.TertiaryExpressionNode? CreateFrom(MetaFac.CG5.Expressions.ITertiaryExpressionNode? source) { }
+    }
+    [MessagePack.MessagePackObject(false)]
+    public class UnaryExpressionNode : MetaFac.CG5.Expressions.MessagePack.Node, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.INode, MetaFac.CG5.Expressions.IUnaryExpressionNode, MetaFac.Mutability.ICopyFrom<MetaFac.CG5.Expressions.MessagePack.UnaryExpressionNode>, System.IEquatable<MetaFac.CG5.Expressions.MessagePack.UnaryExpressionNode>
+    {
+        public const int EntityTag = 13;
+        public UnaryExpressionNode() { }
+        public UnaryExpressionNode(MetaFac.CG5.Expressions.IUnaryExpressionNode source) { }
+        public UnaryExpressionNode(MetaFac.CG5.Expressions.MessagePack.UnaryExpressionNode source) { }
+        [MessagePack.Key(1)]
+        public MetaFac.CG5.Expressions.UnaryOperator Op { get; set; }
+        [MessagePack.Key(2)]
+        public MetaFac.CG5.Expressions.MessagePack.Node? Operand { get; set; }
+        public void CopyFrom(MetaFac.CG5.Expressions.MessagePack.UnaryExpressionNode source) { }
+        public bool Equals(MetaFac.CG5.Expressions.MessagePack.UnaryExpressionNode? other) { }
+        public override bool Equals(object? obj) { }
+        public override int GetHashCode() { }
+        protected override void OnFreeze() { }
+        protected override int OnGetEntityTag() { }
+        public static bool operator !=(MetaFac.CG5.Expressions.MessagePack.UnaryExpressionNode left, MetaFac.CG5.Expressions.MessagePack.UnaryExpressionNode right) { }
+        public static bool operator ==(MetaFac.CG5.Expressions.MessagePack.UnaryExpressionNode left, MetaFac.CG5.Expressions.MessagePack.UnaryExpressionNode right) { }
+    }
+    public sealed class UnaryExpressionNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.IUnaryExpressionNode, MetaFac.CG5.Expressions.MessagePack.UnaryExpressionNode>
+    {
+        public UnaryExpressionNode_Factory() { }
+        public MetaFac.CG5.Expressions.MessagePack.UnaryExpressionNode Empty { get; }
+        public static MetaFac.CG5.Expressions.MessagePack.UnaryExpressionNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.MessagePack.UnaryExpressionNode? CreateFrom(MetaFac.CG5.Expressions.IUnaryExpressionNode? source) { }
+    }
+    [MessagePack.MessagePackObject(false)]
+    public class VariableNode : MetaFac.CG5.Expressions.MessagePack.Node, MetaFac.CG4.Runtime.IEntityBase, MetaFac.CG5.Expressions.INode, MetaFac.CG5.Expressions.IVariableNode, MetaFac.Mutability.ICopyFrom<MetaFac.CG5.Expressions.MessagePack.VariableNode>, System.IEquatable<MetaFac.CG5.Expressions.MessagePack.VariableNode>
+    {
+        public const int EntityTag = 10;
+        public VariableNode() { }
+        public VariableNode(MetaFac.CG5.Expressions.IVariableNode source) { }
+        public VariableNode(MetaFac.CG5.Expressions.MessagePack.VariableNode source) { }
+        [MessagePack.Key(1)]
+        public string? Name { get; set; }
+        public void CopyFrom(MetaFac.CG5.Expressions.MessagePack.VariableNode source) { }
+        public bool Equals(MetaFac.CG5.Expressions.MessagePack.VariableNode? other) { }
+        public override bool Equals(object? obj) { }
+        public override int GetHashCode() { }
+        protected override void OnFreeze() { }
+        protected override int OnGetEntityTag() { }
+        public static bool operator !=(MetaFac.CG5.Expressions.MessagePack.VariableNode left, MetaFac.CG5.Expressions.MessagePack.VariableNode right) { }
+        public static bool operator ==(MetaFac.CG5.Expressions.MessagePack.VariableNode left, MetaFac.CG5.Expressions.MessagePack.VariableNode right) { }
+    }
+    public sealed class VariableNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.IVariableNode, MetaFac.CG5.Expressions.MessagePack.VariableNode>
+    {
+        public VariableNode_Factory() { }
+        public MetaFac.CG5.Expressions.MessagePack.VariableNode Empty { get; }
+        public static MetaFac.CG5.Expressions.MessagePack.VariableNode_Factory Instance { get; }
+        public MetaFac.CG5.Expressions.MessagePack.VariableNode? CreateFrom(MetaFac.CG5.Expressions.IVariableNode? source) { }
+    }
+}
