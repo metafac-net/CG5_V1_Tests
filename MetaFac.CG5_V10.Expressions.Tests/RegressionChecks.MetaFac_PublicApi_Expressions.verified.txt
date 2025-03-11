@@ -336,9 +336,9 @@
         public virtual bool Equals(MetaFac.CG5.Expressions.NumericConstantNode? other) { }
         public override int GetHashCode() { }
         protected override int OnGetEntityTag() { }
+        public static MetaFac.CG5.Expressions.NumericConstantNode Create(System.ReadOnlyMemory<char> source) { }
         public static MetaFac.CG5.Expressions.NumericConstantNode Create(double value) { }
         public static MetaFac.CG5.Expressions.NumericConstantNode Create(long value) { }
-        public static MetaFac.CG5.Expressions.NumericConstantNode Create(System.ReadOnlyMemory<char> source) { }
     }
     public sealed class NumericConstantNode_Factory : MetaFac.CG4.Runtime.IEntityFactory<MetaFac.CG5.Expressions.INumericConstantNode, MetaFac.CG5.Expressions.NumericConstantNode>
     {

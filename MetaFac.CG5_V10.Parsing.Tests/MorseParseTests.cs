@@ -1,4 +1,4 @@
-﻿using FluentAssertions;
+﻿using Shouldly;
 using System;
 using Xunit;
 
@@ -16,8 +16,8 @@ namespace MetaFac.CG5.Parsing.Tests
             var node = parser.Parse(source.AsMemory());
 
             // assert
-            node.HasErrors.Should().BeFalse();
-            node.Result.Should().Be("A");
+            node.HasErrors.ShouldBeFalse();
+            node.Result.ShouldBe("A");
         }
 
         [Fact]
@@ -30,8 +30,8 @@ namespace MetaFac.CG5.Parsing.Tests
             var node = parser.Parse(source.AsMemory());
 
             // assert
-            node.HasErrors.Should().BeFalse();
-            node.Result.Should().Be("SOS");
+            node.HasErrors.ShouldBeFalse();
+            node.Result.ShouldBe("SOS");
         }
 
         [Fact]
@@ -44,8 +44,8 @@ namespace MetaFac.CG5.Parsing.Tests
             var node = parser.Parse(source.AsMemory());
 
             // assert
-            node.HasErrors.Should().BeFalse();
-            node.Result.Should().Be("SOS SOS");
+            node.HasErrors.ShouldBeFalse();
+            node.Result.ShouldBe("SOS SOS");
         }
 
         [Fact]
@@ -58,8 +58,8 @@ namespace MetaFac.CG5.Parsing.Tests
             var node = parser.Parse(source.AsMemory());
 
             // assert
-            node.HasErrors.Should().BeFalse();
-            node.Result.Should().Be("SOS. SOS SOS");
+            node.HasErrors.ShouldBeFalse();
+            node.Result.ShouldBe("SOS. SOS SOS");
         }
     }
 }

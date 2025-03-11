@@ -1,5 +1,5 @@
-﻿using FluentAssertions;
-using PublicApiGenerator;
+﻿using PublicApiGenerator;
+using Shouldly;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -29,7 +29,7 @@ namespace MetaFac.CG5.Parsing.Tests
         [Fact]
         public void VersionCheck()
         {
-            typeof(Combinators).Assembly.FullName.Should().StartWith("MetaFac.CG5.Parsing, Version=1.0.");
+            typeof(Combinators).Assembly.FullName.ShouldStartWith("MetaFac.CG5.Parsing, Version=1.0.");
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿using FluentAssertions;
-using MetaFac.CG5.Parsing;
+﻿using MetaFac.CG5.Parsing;
+using Shouldly;
 
 namespace MetaFac.CG5.Expressions.Tests
 {
@@ -24,8 +24,8 @@ namespace MetaFac.CG5.Expressions.Tests
 
             // assert
             var node = parsed as StringConstantNode;
-            node.Should().NotBeNull();
-            node!.Value.Should().Be(expected);
+            node.ShouldNotBeNull();
+            node!.Value.ShouldBe(expected);
 
             // evaluate
             var vars = new Dictionary<string, object?>();
@@ -55,17 +55,17 @@ namespace MetaFac.CG5.Expressions.Tests
             var node = parser.Parse(source.AsMemory());
 
             // assert
-            node.Should().NotBeNull();
-            (node as NumericConstantNode).Should().NotBeNull();
+            node.ShouldNotBeNull();
+            (node as NumericConstantNode).ShouldNotBeNull();
 
             // evaluate
             var vars = new Dictionary<string, object?>();
             var result = node.Evaluate(vars);
 
             // assert
-            result.Should().NotBeNull();
-            result.Should().BeOfType(et);
-            result.Should().Be(ev);
+            result.ShouldNotBeNull();
+            result.ShouldBeOfType(et);
+            result.ShouldBe(ev);
         }
 
         [Theory]
@@ -103,16 +103,16 @@ namespace MetaFac.CG5.Expressions.Tests
             var node = parser.Parse(source.AsMemory());
 
             // assert
-            node.Should().NotBeNull();
+            node.ShouldNotBeNull();
 
             // evaluate
             var vars = new Dictionary<string, object?>();
             var result = node.Evaluate(vars);
 
             // assert
-            result.Should().NotBeNull();
-            result.Should().BeOfType(et);
-            result.Should().Be(ev);
+            result.ShouldNotBeNull();
+            result.ShouldBeOfType(et);
+            result.ShouldBe(ev);
         }
 
         [Theory]
@@ -135,16 +135,16 @@ namespace MetaFac.CG5.Expressions.Tests
             var node = parser.Parse(source.AsMemory());
 
             // assert
-            node.Should().NotBeNull();
+            node.ShouldNotBeNull();
 
             // evaluate
             var vars = new Dictionary<string, object?>();
             var result = node.Evaluate(vars);
 
             // assert
-            result.Should().NotBeNull();
-            result.Should().BeOfType(et);
-            result.Should().Be(ev);
+            result.ShouldNotBeNull();
+            result.ShouldBeOfType(et);
+            result.ShouldBe(ev);
         }
 
         [Theory]
@@ -159,7 +159,7 @@ namespace MetaFac.CG5.Expressions.Tests
             var node = parser.Parse(source.AsMemory());
 
             // assert
-            node.Should().NotBeNull();
+            node.ShouldNotBeNull();
 
             // evaluate
             var vars = new Dictionary<string, object?>();
@@ -168,14 +168,14 @@ namespace MetaFac.CG5.Expressions.Tests
             var result = node.Evaluate(vars);
 
             // assert
-            result.Should().NotBeNull();
-            result.Should().BeOfType(typeof(long));
-            result.Should().Be(expectedOutput);
+            result.ShouldNotBeNull();
+            result.ShouldBeOfType(typeof(long));
+            result.ShouldBe(expectedOutput);
 
             // check output values are set
-            vars.Values.Should().HaveCount(3);
-            vars.Should().ContainKey("Calculated");
-            vars["Calculated"].Should().Be(expectedOutput);
+            vars.Values.Count.ShouldBe(3);
+            vars.ShouldContainKey("Calculated");
+            vars["Calculated"].ShouldBe(expectedOutput);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿
+using Shouldly;
 
 namespace MetaFac.CG5.Expressions.Tests
 {
@@ -7,7 +8,7 @@ namespace MetaFac.CG5.Expressions.Tests
         [Fact]
         public void VersionCheck()
         {
-            typeof(CG5Parser).Assembly.FullName.Should().StartWith("MetaFac.CG5.Expressions, Version=1.0.");
+            typeof(CG5Parser).Assembly.FullName.ShouldStartWith("MetaFac.CG5.Expressions, Version=1.0.");
         }
     }
 }

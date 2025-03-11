@@ -1,4 +1,4 @@
-﻿using FluentAssertions;
+﻿using Shouldly;
 using System;
 using System.Collections.Generic;
 using Xunit;
@@ -19,19 +19,19 @@ namespace MetaFac.CG5.Parsing.Tests
             foreach (var result in lexer.GetTokens(source.AsMemory())) { result.Switch(errors.Add, tokens.Add); }
 
             // assert
-            errors.Should().BeEmpty();
-            tokens.Count.Should().Be(11);
-            tokens[0].Kind.Should().Be(MorseToken.Dit);
-            tokens[1].Kind.Should().Be(MorseToken.Dit);
-            tokens[2].Kind.Should().Be(MorseToken.Dit);
-            tokens[3].Kind.Should().Be(MorseToken.Gap);
-            tokens[4].Kind.Should().Be(MorseToken.Dah);
-            tokens[5].Kind.Should().Be(MorseToken.Dah);
-            tokens[6].Kind.Should().Be(MorseToken.Dah);
-            tokens[7].Kind.Should().Be(MorseToken.Gap);
-            tokens[8].Kind.Should().Be(MorseToken.Dit);
-            tokens[9].Kind.Should().Be(MorseToken.Dit);
-            tokens[10].Kind.Should().Be(MorseToken.Dit);
+            errors.ShouldBeEmpty();
+            tokens.Count.ShouldBe(11);
+            tokens[0].Kind.ShouldBe(MorseToken.Dit);
+            tokens[1].Kind.ShouldBe(MorseToken.Dit);
+            tokens[2].Kind.ShouldBe(MorseToken.Dit);
+            tokens[3].Kind.ShouldBe(MorseToken.Gap);
+            tokens[4].Kind.ShouldBe(MorseToken.Dah);
+            tokens[5].Kind.ShouldBe(MorseToken.Dah);
+            tokens[6].Kind.ShouldBe(MorseToken.Dah);
+            tokens[7].Kind.ShouldBe(MorseToken.Gap);
+            tokens[8].Kind.ShouldBe(MorseToken.Dit);
+            tokens[9].Kind.ShouldBe(MorseToken.Dit);
+            tokens[10].Kind.ShouldBe(MorseToken.Dit);
         }
     }
 }
